@@ -71,12 +71,52 @@
       height: 478px;
     }
   }
+  &__lists-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 39px;
+    @media screen and (min-width: $desktop) {
+      gap: 85px;
+    }
+  }
   &__list {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin: 20px 0;
   }
+  &__dataset {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__data {
+    color: getcolor(black-text-color);
+    &--red {
+      color: getcolor(white-text-color);
+      background-color: getcolor(accent-color);
+      width: 36px;
+      display: inline-block;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 12px;
+      vertical-align: middle;
+    }
+    &--lightgrey {
+      color: #8c8c8c;
+    }
+    &--grey {
+      background-color: #f7f7f7;
+      color: getcolor(black-text-color);
+      width: 36px;
+      display: inline-block;
+      text-align: center;
+      border-radius: 5px;
+      font-size: 12px;
+      vertical-align: middle;
+    }
+  }
+
   &__item {
     font-size: 12px;
     line-height: 1.33;
@@ -122,6 +162,12 @@
       border: 2px solid transparent;
       background-color: getcolor(accent-color);
       color: getcolor(white-text-color);
+      &:hover {
+        border-color: getcolor(black-color);
+        color: getcolor(black-text-color);
+        background-color: transparent;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+      }
     }
     &--transparent {
       background-color: transparent;

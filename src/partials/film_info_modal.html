@@ -1,4 +1,4 @@
-<div class="backdrop">
+<div class="backdrop is-hidden">
   <div class="film-info">
     <button type="button" class="film-info__close">
       <svg width="30" height="30">
@@ -6,29 +6,34 @@
       </svg>
     </button>
     <div class="film-info__wrapper">
-      <div class="film-info__image-wrapper"></div>
+      <div class="film-info__image-wrapper" id="film-image"></div>
       <div class="film-info__text-wrapper">
-        <h2 class="film-info__name">Lorem ipsum dolor sit.</h2>
-        <ul class="film-info__list">
-          <li class="film-info__item">
-            Vote / Votes
-            <span class="film-info__item film-info__item--margin"></span>
-          </li>
-          <li class="film-info__item">
-            Popularity
-            <span class="film-info__item film-info__item--margin"></span>
-          </li>
-          <li class="film-info__item">
-            Original Title
-            <span class="film-info__item film-info__item--margin"></span>
-          </li>
-          <li class="film-info__item">
-            Genre <span class="film-info__item film-info__item--margin"></span>
-          </li>
-        </ul>
+        <h2 class="film-info__name" id="film-name"></h2>
+        <div class="film-info__lists-wrapper">
+          <ul class="film-info__list">
+            <li class="film-info__item">Vote / Votes</li>
+            <li class="film-info__item">Popularity</li>
+            <li class="film-info__item">Original Title</li>
+            <li class="film-info__item">Genre</li>
+          </ul>
+          <ul class="film-info__dataset">
+            <li class="film-info__data">
+              <span
+                class="film-info__data film-info__data--red"
+                id="average-votes"
+              ></span>
+              <span class="film-info__data film-info__data--lightgrey">/</span>
+              <span class="film-info__data film-info__data--grey" id="votes">
+              </span>
+            </li>
+            <li class="film-info__data" id="popularity"></li>
+            <li class="film-info__data" id="original-title"></li>
+            <li class="film-info__data" id="genre"></li>
+          </ul>
+        </div>
         <div class="film-info__about-wrapper">
           <h3 class="film-info__about">About</h3>
-          <p class="film-info__text">
+          <p class="film-info__text" id="filmOverview">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio
             voluptatem similique id officia placeat architecto non ratione, ex
             magnam quidem obcaecati! Nobis voluptatibus quisquam, sunt magni
@@ -41,6 +46,7 @@
               <button
                 type="button"
                 class="buttons-list__button buttons-list__button--red"
+                id="js-watched"
               >
                 Add to Watched
               </button>
@@ -49,6 +55,7 @@
               <button
                 type="button"
                 class="buttons-list__button buttons-list__button--transparent"
+                id="js-queue"
               >
                 Add to Queue
               </button>
