@@ -1,5 +1,4 @@
 export const refs = {
-
   buttonRefHome: document.querySelector('#button-header-home'),
   buttonRefLibrary: document.querySelector('#button-header-library'),
   divRefButtonLibrary: document.querySelector('.header-logo--position'),
@@ -13,4 +12,6 @@ export const refs = {
   filmOverviewRef: document.querySelector('#filmOverview'),
   filmImageRef: document.querySelector('#film-image'),
 
+  WATCHED: watched,
+  QUEUE: queue,
 };

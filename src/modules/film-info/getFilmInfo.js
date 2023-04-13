@@ -5,6 +5,6 @@ export default async function getFilmInfo(id) {
     return r.json();
   });
 }
-// getFilmInfo(594772).then(data => {
-//   renderFilmInfo(data);
-// });
+getFilmInfo(594773).then(data => {
+  renderFilmInfo(data);
+});
