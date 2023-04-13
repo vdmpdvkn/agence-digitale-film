@@ -12,6 +12,6 @@ export const refs = {
   filmOverviewRef: document.querySelector('#filmOverview'),
   filmImageRef: document.querySelector('#film-image'),
 
-  WATCHED: watched,
-  QUEUE: queue,
+  WATCHED: 'watched',
+  QUEUE: 'queue',
 };
