@@ -304,12 +304,13 @@ body {
 }
 
 //Library
-
-.header-logo__library--position{
-    position: absolute;
-    bottom: 54px;
-    left: 50%;
-    transform: translate(-50%, -50%);
+@media screen and (max-width: 767px) {
+.header-logo__library--position {
+        position: absolute;
+        bottom: 54px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
 .header-button__library{
     position: absolute;

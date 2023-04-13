@@ -1,4 +1,9 @@
 export const refs = {
+
+  buttonRefHome: document.querySelector('#button-header-home'),
+  buttonRefLibrary: document.querySelector('#button-header-library'),
+  divRefButtonLibrary: document.querySelector('.header-logo--position'),
+  divRefWatchedQueue: document.querySelector('.header-button__library'),
   filmNameRef: document.querySelector('#film-name'),
   filmVotesRef: document.querySelector('#votes'),
   filmAverageVotesRef: document.querySelector('#average-votes'),
@@ -7,4 +12,5 @@ export const refs = {
   filmGenreRef: document.querySelector('#genre'),
   filmOverviewRef: document.querySelector('#filmOverview'),
   filmImageRef: document.querySelector('#film-image'),
+
 };
