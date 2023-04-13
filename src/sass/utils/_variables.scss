@@ -1,12 +1,14 @@
 $main-font: 'Roboto';
-$transition-function: cubic-bezier(0.4, 0, 0.2, 1);
+$time-function: cubic-bezier(0.4, 0, 0.2, 1);
 $colors: (
   'black-text-color': #000000,
   'red-text-color': #b92f2c,
   'white-text-color': #ffffff,
+  'grey-text-color': #8c8c8c,
   'accent-color': #b92f2c,
   'white-color': #ffffff,
   'black-color': #000000,
+  'modal-backdrop-bg-color': rgb(129, 124, 124, 0.3),
 );
 @function getcolor($key) {
   @return map-get($colors, $key);
