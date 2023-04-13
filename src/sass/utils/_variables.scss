@@ -1,0 +1,16 @@
+$main-font: 'Roboto';
+$transition-function: cubic-bezier(0.4, 0, 0.2, 1);
+$colors: (
+  'black-text-color': #000000,
+  'red-text-color': #b92f2c,
+  'white-text-color': #ffffff,
+  'accent-color': #b92f2c,
+  'white-color': #ffffff,
+  'black-color': #000000,
+);
+@function getcolor($key) {
+  @return map-get($colors, $key);
+}
+$phone: 320px;
+$tablet: 768px;
+$desktop: 1280px;
