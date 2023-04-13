@@ -33,12 +33,12 @@ function renderStartingMoviesList(moviesArr) {
       const movieYear = getMovieYear(release_date);
       const movieGenres = getMovieGenres(genre_ids, globalGenres);
       const fullImageUrl = `${BASE_IMAGE_URL}${imageSize}${poster_path}`;
-      return `<div class="movie" data-id=${id}>
+      return `<li class="movie" data-id=${id}>
 <img src="${fullImageUrl}" width="395"/>
 <p class="movie__title">${title}</p>
 <p class="movie__genres">${movieGenres}</p>
 <p class="movie__year">${movieYear}</p>
-</div>
+</li>
 `;
     })
     .join('');
