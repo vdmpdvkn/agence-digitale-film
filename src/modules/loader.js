@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+import axios from 'axios';
 import {BASE_URL} from './api_key'
 
 
