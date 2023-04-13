@@ -1,0 +1,55 @@
+<header id="header">
+  <div class="header header-container" style="background-color: black">
+    <div class="header-nav--position">
+      <form class="header-form">
+        <input
+          type="text"
+          name="film"
+          class="header-form__input"
+          placeholder="Movie Search"
+        />
+        <button class="header-form__button" id="button-form-search">
+          <svg class="header-form__button--svg">
+            <use href="./images/header/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+      <nav class="header-nav">
+        <button
+          class="header-nav_home header-nav--active"
+          id="button-header-home"
+        >
+          <a href="index.html"></a>
+          HOME
+        </button>
+        <button class="header-nav_library" id="button-header-library">
+          MY LIBRARY
+        </button>
+      </nav>
+    </div>
+    <p class="header-form--search visually-hidden" style="display: none">
+      Search result not successful. Enter the correct movie name.
+    </p>
+    <div class="header-logo--position">
+      <!-- class="header-logo__library--position" -->
+      <a href="index.html" class="header-logo"
+        >Filmoteka
+        <svg class="header-logo__svg">
+          <use href="./images/header/icons.svg#icon-film"></use>
+        </svg>
+      </a>
+    </div>
+    <div class="header-button__library" style="display: none">
+      <!-- змінити на display: flex -->
+      <button
+        class="header-button__library--watched header-button__library--active"
+        id="button-header-watched"
+      >
+        WATCHED
+      </button>
+      <button class="header-button__library--queue" id="button-header-queue">
+        QUEUE
+      </button>
+    </div>
+  </div>
+</header>
