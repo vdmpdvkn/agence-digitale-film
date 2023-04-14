@@ -8,8 +8,6 @@ import {
 } from '../localStorage/localStorage';
 import { renderFilmInfo } from '../film-info/renderFilmInfo';
 
-refs.buttonRefLibrary.addEventListener('click', onClickMyLibraryButton);
-
 export function onClickMyLibraryButton() {
   refs.divRefButtonLibrary.classList.add('header-logo__library--position');
   refs.buttonRefLibrary.classList.add('header-nav--active');
