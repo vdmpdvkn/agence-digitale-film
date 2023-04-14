@@ -41,16 +41,10 @@ function renderStartingMoviesList(moviesArr) {
         first_air_date = '',
         genre_ids = [],
       } = movie;
-      let movieYear;
-      if (!release_date) {
-        movieYear = getMovieYear(first_air_date);
-      } else {
-        movieYear = getMovieYear(release_date);
-      }
-      let movieName = title;
-      if (!title) {
-        movieName = name;
-      }
+      let movieYear = release_date
+        ? getMovieYear(release_date)
+        : getMovieYear(first_air_date);
+      let movieName = title ? title : name;
       const movieGenres = getMovieGenres(genre_ids, globalGenres);
       const fullImageUrl = `${BASE_IMAGE_URL}${imageSize}${poster_path}`;
       return `<li class="movie" data-id=${id}>
