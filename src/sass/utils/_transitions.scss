@@ -12,9 +12,10 @@ button {
   transition-property: color, background-color, box-shadow, fill, transform;
   &:hover > svg {
     fill: getcolor(accent-color);
+    transform: scale(1.1);
   }
   & > svg {
-    transition: fill 250ms $time-function;
+    transition: fill 250ms $time-function, transform 250ms $time-function;
   }
 }
 input,

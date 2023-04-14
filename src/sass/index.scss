@@ -1,8 +1,11 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
-@import './base/reset';
 @import './utils/variables';
+@import './base/reset';
 @import './utils/transitions';
-@import './components/header';
 @import './base/container';
+@import './components/header';
+@import './components/container';
+
 @import './base/backdrop';
 @import './components/film_info_modal';
+@import './components/footer';
