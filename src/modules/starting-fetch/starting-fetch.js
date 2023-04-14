@@ -34,6 +34,7 @@ function renderStartingMoviesList(moviesArr) {
     .map(movie => {
       const {
         title,
+        name,
         poster_path,
         id,
         release_date,
@@ -46,11 +47,15 @@ function renderStartingMoviesList(moviesArr) {
       } else {
         movieYear = getMovieYear(release_date);
       }
+      let movieName = title;
+      if (!title) {
+        movieName = name;
+      }
       const movieGenres = getMovieGenres(genre_ids, globalGenres);
       const fullImageUrl = `${BASE_IMAGE_URL}${imageSize}${poster_path}`;
       return `<li class="movie" data-id=${id}>
 <img src="${fullImageUrl}" width="395"/>
-<p class="movie__title">${title}</p>
+<p class="movie__title">${movieName}</p>
 <p class="movie__genres">${movieGenres}</p>
 <p class="movie__year">${movieYear}</p>
 </li>
@@ -67,7 +72,6 @@ function getMovieYear(releasedate) {
 function getMovieGenres(genreIdsArray, genres) {
   const genreNames = [];
   genreIdsArray.forEach(id => {
-    console.log(genreNames.length);
     if (genreNames.length >= 2) {
       return;
     }
