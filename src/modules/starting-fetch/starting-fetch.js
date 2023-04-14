@@ -1,4 +1,4 @@
-import globalGenres from './globalGenres';
+import { globalGenres } from './globalGenres';
 import { refs } from '../refs';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/';
@@ -32,11 +32,20 @@ getStartingArray().then(() => {
 function renderStartingMoviesList(moviesArr) {
   const markup = moviesArr
     .map(movie => {
-      const { title, poster_path, id, release_date, genre_ids = [] } = movie;
+      const {
+        title,
+        poster_path,
+        id,
+        release_date,
+        first_air_date = '',
+        genre_ids = [],
+      } = movie;
+      let movieYear;
       if (!release_date) {
-        return;
+        movieYear = getMovieYear(first_air_date);
+      } else {
+        movieYear = getMovieYear(release_date);
       }
-      const movieYear = getMovieYear(release_date);
       const movieGenres = getMovieGenres(genre_ids, globalGenres);
       const fullImageUrl = `${BASE_IMAGE_URL}${imageSize}${poster_path}`;
       return `<li class="movie" data-id=${id}>
