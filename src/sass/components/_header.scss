@@ -6,7 +6,7 @@
   height: 460px;
 
   @media screen and (min-width: 768px) {
-    width: 708px;
+    width: 704px;
     height: 222px;
   }
 
@@ -109,11 +109,11 @@
   }
 
   @media screen and (min-width: 1280px) {
-    top: 33px;
+    top: 37px;
     left: 115px;
 
     width: 168px;
-    height: 40px;
+    height: 42px;
   }
 }
 
@@ -319,6 +319,20 @@
     bottom: 54px;
     left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 0;
+      animation-name: fadeIn;
+      animation-duration: 2s;
+      animation-fill-mode: forwards;
+    
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+    
+        to {
+          opacity: 1;
+        }
+      }
   }
 }
 .header-button__library {
@@ -327,6 +341,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
 
   @media screen and (min-width: 768px) {
     top: 33px;
@@ -339,6 +357,16 @@
     left: 1063px;
   }
 }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+  
+      to {
+        opacity: 1;
+      }
+    }
+
 .header-button__library--watched {
   width: 102px;
   height: 34px;
