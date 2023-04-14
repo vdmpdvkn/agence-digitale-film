@@ -21,8 +21,8 @@ p::selection,
 span::selection,
 a::selection,
 li::selection {
-  background-color: #f8d24e;
-  color: #131313;
+  background-color: getcolor(accent-color);
+  color: getcolor(white-text-color);
 }
 button {
   padding: 0;

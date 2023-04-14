@@ -1,104 +1,90 @@
-h2, p, ul {
-    margin: 0;
-}
-
-.list {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-}
-
-
 .cards {
-    padding-bottom: 40px;
+  padding-bottom: 40px;
 
-    @media screen and (min-width:768px) {
-        padding-bottom: 60px;
-    }
+  @media screen and (min-width: 768px) {
+    padding-bottom: 60px;
+  }
 }
 
 .cards__film {
-    @media  screen and (min-width: 768px) {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 32px;
-    }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
 
-    @media screen and (min-width: 1280px) {
-        gap: 16px;
-        flex-wrap: nowrap;
-    }
+  @media screen and (min-width: 1280px) {
+    gap: 16px;
+    flex-wrap: nowrap;
+  }
 }
 
 .movie {
-    margin-bottom: 20px;
-    @media screen and (min-width: 768px) {
-        flex-basis: calc((100% - 64px) / 2);
-        margin-bottom: 32px;
-    }
+  margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+    flex-basis: calc((100% - 64px) / 2);
+    margin-bottom: 32px;
+  }
 
-    @media screen and (min-width: 1280px) {
-        flex-basis: calc((100% - 48px) / 3);
-    }
+  @media screen and (min-width: 1280px) {
+    flex-basis: calc((100% - 48px) / 3);
+  }
 }
 
 .image {
-    display: block;
-    width: 280px;
-    height: 402px;
-    margin-bottom: 10px;
-    background-color: black;
-    border-radius: 5px;
+  display: block;
+  width: 280px;
+  height: 402px;
+  margin-bottom: 10px;
+  background-color: black;
+  border-radius: 5px;
 
-    @media screen and (min-width: 768px) {
-        width: 336px;
-        height: 455px;
-        margin-bottom: 8px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    height: 455px;
+    margin-bottom: 8px;
+  }
 
-    @media screen and (min-width: 1280px) {
-        width: 395px;
-        height: 574px;
-        margin-bottom: 12px;
-    }
+  @media screen and (min-width: 1280px) {
+    width: 395px;
+    height: 574px;
+    margin-bottom: 12px;
+  }
 }
 
 .movie__title {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: calc(14 / 12);
-    text-transform: uppercase;
-    color: #000000;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  text-transform: uppercase;
+  color: #000000;
 
-    @media screen and (min-width: 1280px) {
-        font-size: 20px;
-        line-height: calc(24 / 20);
-    }
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: calc(24 / 20);
+  }
 }
 
 .movie__genres {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: calc(16 / 12);
-    color: #B92F2C;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+  color: #b92f2c;
 
-    @media screen and (min-width: 1280px) {
-        font-size: 20px;
-        line-height: calc(24 / 20);
-    }
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: calc(24 / 20);
+  }
 }
 
 .movie__year {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: calc(16 / 12);
-    color: #B92F2C;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(16 / 12);
+  color: #b92f2c;
 
-    @media screen and (min-width: 1280px) {
-            font-size: 20px;
-            line-height: calc(24 / 20);
-        }
+  @media screen and (min-width: 1280px) {
+    font-size: 20px;
+    line-height: calc(24 / 20);
+  }
 }
-
-
-

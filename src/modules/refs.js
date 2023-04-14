@@ -9,10 +9,12 @@ export const refs = {
   filmPopularityRef: document.querySelector('#popularity'),
   filmOriginalTitleRef: document.querySelector('#original-title'),
   filmGenreRef: document.querySelector('#genre'),
-  filmOverviewRef: document.querySelector('#filmOverview'),
+  filmOverviewRef: document.querySelector('#film-overview'),
   backdropRef: document.querySelector('#backdrop'),
   filmInfoCloseBtnRef: document.querySelector('.js-close'),
   filmImageRef: document.querySelector('#film-modal-image'),
+  filmAddToWatchedBtnRef: document.querySelector('#js-watched'),
+  filmAddToQueueBtnRef: document.querySelector('#js-queue'),
   WATCHED: 'watched',
   QUEUE: 'queue',
 };

@@ -1,11 +1,12 @@
 import { refs } from '../refs';
-const { backdropRef } = refs;
+const { backdropRef, filmImageRef } = refs;
 
 export function closeFilmInfoOnBackdropClick(evt) {
   if (!evt.target.classList.contains('backdrop')) {
     return;
   }
   evt.currentTarget.classList.add('is-hidden');
+
   evt.currentTarget.removeEventListener('click', closeFilmInfoOnBackdropClick);
 }
 export function closeFilmInfoOnEsc(evt) {
@@ -14,9 +15,11 @@ export function closeFilmInfoOnEsc(evt) {
   }
 
   backdropRef.classList.add('is-hidden');
+
   document.removeEventListener('keydown', closeFilmInfoOnEsc);
 }
 export function closeFilmInfoOnCloseBtnClick(evt) {
   backdropRef.classList.add('is-hidden');
+
   evt.currentTarget.removeEventListener('click', closeFilmInfoOnCloseBtnClick);
 }
