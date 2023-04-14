@@ -17,6 +17,8 @@ export const refs = {
   filmAddToQueueBtnRef: document.querySelector('#js-queue'),
   filmWatchTrailerBtnRef: document.querySelector('#js-trailer'),
   galleryListRef: document.querySelector('#js-list'),
+  formRef: document.querySelector('.header-form'),
+
   WATCHED: 'watched',
   QUEUE: 'queue',
 };

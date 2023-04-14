@@ -7,10 +7,10 @@ export const apiRefs = {
   MOVIE_DETAILS: 'movieDetails',
   MOVIE_VIDEO: 'movieVideo',
 };
-export default async function fetchApi(param, id = 0, page = 1) {
+export default async function fetchApi(param, id = 0, page = 1, query = '') {
   const endpoints = {
     trending: `/trending/all/day?api_key=${API_KEY}`,
-    search: `/search/movie?api_key=${API_KEY}&${page}`,
+    search: `/search/movie?api_key=${API_KEY}&query=${query}`,
     movieDetails: `/movie/${id}?api_key=${API_KEY}`,
     movieVideo: `/movie/${id}/videos?api_key=${API_KEY}`,
   };
