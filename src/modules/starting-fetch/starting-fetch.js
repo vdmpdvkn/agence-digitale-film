@@ -67,6 +67,10 @@ function getMovieYear(releasedate) {
 function getMovieGenres(genreIdsArray, genres) {
   const genreNames = [];
   genreIdsArray.forEach(id => {
+    console.log(genreNames.length);
+    if (genreNames.length >= 2) {
+      return;
+    }
     const genre = genres.find(genreObj => genreObj.id === id);
     if (genre) {
       genreNames.push(genre.name);
