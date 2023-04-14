@@ -1,5 +1,5 @@
-import getFilmInfo from './getFilmInfo';
 import { refs } from '../refs';
+
 const imageLink = 'https://image.tmdb.org/t/p/w500';
 export function renderFilmInfo(object) {
   const {

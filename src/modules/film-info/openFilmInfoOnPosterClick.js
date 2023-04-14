@@ -1,5 +1,6 @@
 import { refs } from '../refs';
-import getFilmInfo from './getFilmInfo';
+import fetchApi from '../api_key';
+import { apiRefs } from '../api_key';
 import { renderFilmInfo } from './renderFilmInfo';
 import {
   closeFilmInfoOnBackdropClick,
@@ -8,15 +9,15 @@ import {
 } from './closeFilmInfoModal';
 
 export function openFilmInfoOnPosterClick(evt) {
-  if (evt.target.nodeName !== 'LI' && evt.target.parentNode.nodeName !=='LI') {
-    // console.log(evt.target.parentNode.nodeName);
-    // console.log(evt.target.nodeName);
+  if (evt.target.nodeName !== 'LI' && evt.target.parentNode.nodeName !== 'LI') {
     return;
   }
 
-  // console.log(evt.target.parentNode.dataset.id);
   const { backdropRef, filmInfoCloseBtnRef } = refs;
-  getFilmInfo(Number(evt.target.dataset.id ?? evt.target.parentNode.dataset.id))
+  fetchApi(
+    apiRefs.MOVIE_DETAILS,
+    Number(evt.target.dataset.id ?? evt.target.parentNode.dataset.id)
+  )
     .then(data => {
       renderFilmInfo(data);
     })

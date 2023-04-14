@@ -1,16 +1,16 @@
 import { globalGenres } from './globalGenres';
 import { refs } from '../refs';
+import fetchApi from '../api_key';
+import { apiRefs } from '../api_key';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/';
 const API_KEY = 'cb1bcc244723619ea7f2217b5a84ccd8';
 const imageSize = 'w500';
 
 const startingFetch = async () => {
-  const response = await fetch(
-    `${BASE_URL}/trending/all/day?api_key=${API_KEY}`
-  );
-  const data = await response.json();
-  return data.results;
+  const response = await fetchApi(apiRefs.TRENDING);
+
+  return response.results;
 };
 
 const startingArr = [];
@@ -56,7 +56,7 @@ function renderStartingMoviesList(moviesArr) {
 `;
     })
     .join('');
-  refs.galleryListRef.insertAdjacentHTML('afterbegin', markup);
+  refs.galleryListRef.innerHTML = markup;
 }
 
 function getMovieYear(releasedate) {
