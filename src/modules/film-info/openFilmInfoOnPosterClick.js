@@ -1,6 +1,6 @@
 import { refs } from '../refs';
-import fetchApi from '../api_key';
-import { apiRefs } from '../api_key';
+import fetchApi from '../api-service';
+import { apiRefs } from '../api-service';
 import { renderFilmInfo } from './renderFilmInfo';
 import {
   closeFilmInfoOnBackdropClick,

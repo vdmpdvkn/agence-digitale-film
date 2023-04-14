@@ -1,7 +1,7 @@
 import { globalGenres } from './globalGenres';
 import { refs } from '../refs';
-import fetchApi from '../api_key';
-import { apiRefs } from '../api_key';
+import fetchApi from '../api-service';
+import { apiRefs } from '../api-service';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/';
 const API_KEY = 'cb1bcc244723619ea7f2217b5a84ccd8';
