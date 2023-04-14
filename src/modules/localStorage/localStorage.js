@@ -1,11 +1,12 @@
 // please import
 
 //  import { setStorage, getStorage, delFromStorage, clearStorage, getItemFromStorage } from "HERE";
+//  import import { refs } from "../refs";
 
 // entry params:
 
-// section - 'watched' or 'queue' section to render 
-//  needs WATCHED & QUEUE CONST!!!
+// section - refs.QUEUE or refs.WATCHED section to render. as refs const to avoid mistakes!
+//  
 
 // filmInfo - object with film information needs to save for ex.:
 // {
@@ -29,7 +30,7 @@ export const getStorage = section => {
     return dataArr;
   }
   dataArr.push(...data);
-  return dataArr; // return array of films info obj
+  return dataArr; // return array of films info obj similar to entry arrays of obj
 };
 
 export const getItemFromStorage = (section, id) => {
@@ -40,7 +41,7 @@ export const setStorage = (section, filmInfo) => {
   dataArr = getStorage(section);
   if (dataArr.find(film => film.id === filmInfo.id)) {
     Notify.info(`You have this film in ${section} already`);
-    return;
+    return; // if saved already
   }
   dataArr.push(filmInfo);
   Notify.info(`You got it`);
