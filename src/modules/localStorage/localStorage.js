@@ -1,6 +1,6 @@
 // please import
 
-//  import { setStorage, getStorage, delFromStorage, clearStorage } from "HERE";
+//  import { setStorage, getStorage, delFromStorage, clearStorage, getItemFromStorage } from "HERE";
 
 // entry params:
 
@@ -19,31 +19,34 @@
 // }
 
 import { refs } from "../refs";
+import { Notify } from "notiflix";
 
 export const getStorage = section => {
   const dataArr = [];
   const data = JSON.parse(localStorage.getItem(section));
   if (!data) {
-    //some Notify.info(`You have NO films in ${section}`)
+    Notify.info(`You have NO films in ${section}`);
     return dataArr;
   }
   dataArr.push(...data);
-  return dataArr;
+  return dataArr; // return array of films info obj
 };
+
+export const getItemFromStorage = (section, id) => {
+  return getStorage(section).find((film) => film.id === id); // return element or undefined if didnt find
+}
 
 export const setStorage = (section, filmInfo) => {
   dataArr = getStorage(section);
   if (dataArr.find(film => film.id === filmInfo.id)) {
-    // some Notify.info(`You have this film in ${section} already`)
+    Notify.info(`You have this film in ${section} already`);
     return;
   }
   dataArr.push(filmInfo);
+  Notify.info(`You got it`);
   localStorage.setItem(section, JSON.stringify(dataArr));
-
   // del from other section code here
-  // delFromStorage('OTHER_SECTION', filmInfo.id);
-  // needs WATCHED & QUEUE CONST!!!
-  // replace "OTHER_SECTION" with section === WATCHED ? QUEUE : WATCHED
+  delFromStorage(section === refs.WATCHED ? refs.QUEUE : refs.WATCHED, filmInfo.id);
 };
 
 export const delFromStorage = (section, id) => {
@@ -53,6 +56,8 @@ export const delFromStorage = (section, id) => {
   }
   const filtered = dataArr.filter(film => film.id !== id);
   localStorage.setItem(section, JSON.stringify(filtered));
+  Notify.info(`You delete it`);
+
 };
 
 export const clearStorage = section => {
