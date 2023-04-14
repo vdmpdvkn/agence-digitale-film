@@ -56,7 +56,7 @@ function renderStartingMoviesList(moviesArr) {
 `;
     })
     .join('');
-  refs.galleryListRef.insertAdjacentHTML('afterbegin', markup);
+  refs.galleryListRef.innerHTML = markup;
 }
 
 function getMovieYear(releasedate) {
