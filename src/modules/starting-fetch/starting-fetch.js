@@ -19,7 +19,7 @@ const getStartingArray = async () => {
   try {
     const result = await startingFetch();
     startingArr.push(...result);
-    console.log(startingArr);
+    // console.log(startingArr);
   } catch (error) {
     console.error('Error:', error);
   }
