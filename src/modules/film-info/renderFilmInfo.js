@@ -1,7 +1,6 @@
 import getFilmInfo from './getFilmInfo';
 import { refs } from '../refs';
 const imageLink = 'https://image.tmdb.org/t/p/w400';
-console.log('refs->', refs);
 export function renderFilmInfo(object) {
   const {
     original_title,
@@ -24,10 +23,8 @@ export function renderFilmInfo(object) {
     filmImageRef,
   } = refs;
 
-  const image = document.createElement('img');
-  image.src = `${imageLink}${poster_path}`;
-  image.alt = original_title;
-  filmImageRef.append(image);
+  filmImageRef.src = `${imageLink}${poster_path}`;
+  filmImageRef.alt = original_title;
 
   filmNameRef.textContent = original_title;
   filmOriginalTitleRef.textContent = original_title;

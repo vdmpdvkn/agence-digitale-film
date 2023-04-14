@@ -10,8 +10,9 @@ export const refs = {
   filmOriginalTitleRef: document.querySelector('#original-title'),
   filmGenreRef: document.querySelector('#genre'),
   filmOverviewRef: document.querySelector('#filmOverview'),
-  filmImageRef: document.querySelector('#film-image'),
-
+  backdropRef: document.querySelector('#backdrop'),
+  filmInfoCloseBtnRef: document.querySelector('.js-close'),
+  filmImageRef: document.querySelector('#film-modal-image'),
   WATCHED: 'watched',
   QUEUE: 'queue',
 };
