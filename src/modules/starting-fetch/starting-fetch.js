@@ -1,4 +1,5 @@
 import globalGenres from './globalGenres';
+import { refs } from '../refs';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/';
 const API_KEY = 'cb1bcc244723619ea7f2217b5a84ccd8';
@@ -24,12 +25,17 @@ const getStartingArray = async () => {
   }
 };
 
-getStartingArray();
+getStartingArray().then(() => {
+  renderStartingMoviesList(startingArr);
+});
 
 function renderStartingMoviesList(moviesArr) {
   const markup = moviesArr
     .map(movie => {
       const { title, poster_path, id, release_date, genre_ids = [] } = movie;
+      if (!release_date) {
+        return;
+      }
       const movieYear = getMovieYear(release_date);
       const movieGenres = getMovieGenres(genre_ids, globalGenres);
       const fullImageUrl = `${BASE_IMAGE_URL}${imageSize}${poster_path}`;
@@ -42,7 +48,7 @@ function renderStartingMoviesList(moviesArr) {
 `;
     })
     .join('');
-  // refs.DOMel.insertAdjacentHTML('afterbegin', markup);
+  refs.galleryListRef.insertAdjacentHTML('afterbegin', markup);
 }
 
 function getMovieYear(releasedate) {

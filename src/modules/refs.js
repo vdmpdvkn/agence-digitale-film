@@ -15,6 +15,8 @@ export const refs = {
   filmImageRef: document.querySelector('#film-modal-image'),
   filmAddToWatchedBtnRef: document.querySelector('#js-watched'),
   filmAddToQueueBtnRef: document.querySelector('#js-queue'),
+  filmWatchTrailerBtnRef: document.querySelector('#js-trailer'),
+  galleryListRef: document.querySelector('#js-list'),
   WATCHED: 'watched',
   QUEUE: 'queue',
 };

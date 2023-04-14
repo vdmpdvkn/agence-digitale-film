@@ -12,6 +12,7 @@ export function renderFilmInfo(object) {
     poster_path,
     id,
   } = object;
+  console.log('object->', object);
 
   const {
     filmNameRef,
@@ -24,6 +25,7 @@ export function renderFilmInfo(object) {
     filmImageRef,
     filmAddToWatchedBtnRef,
     filmAddToQueueBtnRef,
+    filmWatchTrailerBtnRef,
   } = refs;
 
   filmImageRef.src = `${imageLink}${poster_path}`;
@@ -45,4 +47,5 @@ export function renderFilmInfo(object) {
 
   filmAddToWatchedBtnRef.dataset.id = id;
   filmAddToQueueBtnRef.dataset.id = id;
+  filmWatchTrailerBtnRef.dataset.id = id;
 }

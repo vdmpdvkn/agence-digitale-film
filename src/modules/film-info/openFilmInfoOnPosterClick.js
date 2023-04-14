@@ -7,10 +7,12 @@ import {
   closeFilmInfoOnCloseBtnClick,
 } from './closeFilmInfoModal';
 
-function openFilmInfoOnPosterClick(evt) {
+export function openFilmInfoOnPosterClick(evt) {
   if (evt.target.nodeName !== 'LI') {
     return;
   }
+
+  console.log(evt.target.nodeName);
   const { backdropRef, filmInfoCloseBtnRef } = refs;
   getFilmInfo(Number(evt.target.dataset.id))
     .then(data => {
