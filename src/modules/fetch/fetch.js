@@ -22,6 +22,7 @@
 
 // param === refs.SOME_MEANING
 
+
 export default async function fetch(param, id=0, page=1) {
 const endpoints = {
     'trending':`/trending/all/day?api_key=${API_KEY}&${page}`,
