@@ -1,4 +1,4 @@
-export default globalGenres = [
+const globalGenres = [
   {
     id: 28,
     name: 'Action',
@@ -76,3 +76,5 @@ export default globalGenres = [
     name: 'Western',
   },
 ];
+
+export { globalGenres };
