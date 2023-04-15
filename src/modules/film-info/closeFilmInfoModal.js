@@ -1,5 +1,5 @@
 import { refs } from '../refs';
-const { backdropRef } = refs;
+const { backdropRef, watchedBtnRef, queueBtnRef } = refs;
 
 export function closeFilmInfoOnBackdropClick(evt) {
   if (!evt.target.classList.contains('backdrop')) {
