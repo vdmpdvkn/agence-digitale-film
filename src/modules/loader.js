@@ -21,14 +21,14 @@ import { refs } from './refs';
 
 
  refs.loaderButton.addEventListener('click', loadData)
- refs.spinner.document.getElementById('#spinner');
+ refs.spinner.document.querySelector('#spinner');
 
 export function loadData() {
-  spinner.removeAttribute('hidden');
+  refs.spinner.removeAttribute('hidden');
   fetch(BASE_URL)
     .then(response => response.json())
     .then(data => {
-      spinner.setAttribute('hidden', '');
+      refs.spinner.setAttribute('hidden', '');
       console.log(data);
     });
 }
