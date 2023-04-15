@@ -7,7 +7,6 @@ import {
 const watchedBtn = document.getElementById('js-watched');
 const queueBtn = document.getElementById('js-queue');
 
-
 watchedBtn.addEventListener('click', handleWatchedClick);
 queueBtn.addEventListener('click', handleQueueClick);
 
@@ -50,6 +49,7 @@ function handleWatchedClick(event) {
   const posterPath = document
     .getElementById('film-modal-image')
     .getAttribute('src');
+  // const genreIds = document.getElementById('genre').textContent.split(', ');
   const genreIds = document.getElementById('genre').textContent;
   const popularity = document.getElementById('popularity').textContent;
   const watchedMovies = getStorage('watched');
@@ -76,6 +76,7 @@ function handleQueueClick(event) {
     .getElementById('film-modal-image')
     .getAttribute('src');
   const genreIds = document.getElementById('genre').textContent;
+  // const genreIds = document.getElementById('genre').textContent.split(', ');
   const popularity = document.getElementById('popularity').textContent;
   const queuedMovies = getStorage('queue');
   if (button.classList.contains('add-queue')) {
