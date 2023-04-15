@@ -3,36 +3,38 @@ import {
   delFromStorage,
   getStorage,
 } from '../localStorage/localStorage';
+import { refs } from '../refs';
+const { watchedBtnRef, queueBtnRef } = refs;
 
 function toggleWatchedBtn() {
-  if (watchedBtn.classList.contains('add-watched')) {
-    watchedBtn.classList.remove('add-watched');
-    watchedBtn.classList.add('remove-watched');
-    watchedBtn.textContent = 'Remove from Watched';
-    watchedBtn.disabled = false;
-    queueBtn.disabled = true;
+  if (watchedBtnRef.classList.contains('add-watched')) {
+    watchedBtnRef.classList.remove('add-watched');
+    watchedBtnRef.classList.add('remove-watched');
+    watchedBtnRef.textContent = 'Remove from Watched';
+    watchedBtnRef.disabled = false;
+    queueBtnRef.disabled = true;
   } else {
-    watchedBtn.classList.remove('remove-watched');
-    watchedBtn.classList.add('add-watched');
-    watchedBtn.textContent = 'Add to Watched';
-    watchedBtn.disabled = false;
-    queueBtn.disabled = false;
+    watchedBtnRef.classList.remove('remove-watched');
+    watchedBtnRef.classList.add('add-watched');
+    watchedBtnRef.textContent = 'Add to Watched';
+    watchedBtnRef.disabled = false;
+    queueBtnRef.disabled = false;
   }
 }
 
 function toggleQueueBtn() {
-  if (queueBtn.classList.contains('add-queue')) {
-    queueBtn.classList.remove('add-queue');
-    queueBtn.classList.add('remove-queue');
-    queueBtn.textContent = 'Remove from Queue';
-    queueBtn.disabled = false;
-    watchedBtn.disabled = true;
+  if (queueBtnRef.classList.contains('add-queue')) {
+    queueBtnRef.classList.remove('add-queue');
+    queueBtnRef.classList.add('remove-queue');
+    queueBtnRef.textContent = 'Remove from Queue';
+    queueBtnRef.disabled = false;
+    watchedBtnRef.disabled = true;
   } else {
-    queueBtn.classList.remove('remove-queue');
-    queueBtn.classList.add('add-queue');
-    queueBtn.textContent = 'Add to Queue';
-    queueBtn.disabled = false;
-    watchedBtn.disabled = false;
+    queueBtnRef.classList.remove('remove-queue');
+    queueBtnRef.classList.add('add-queue');
+    queueBtnRef.textContent = 'Add to Queue';
+    queueBtnRef.disabled = false;
+    watchedBtnRef.disabled = false;
   }
 }
 
@@ -59,7 +61,7 @@ export function handleWatchedClick(event) {
   } else if (button.classList.contains('remove-watched')) {
     delFromStorage('watched', trailerId);
   }
-  console.log(watchedBtn.classList.contains('add-watched'));
+  console.log(watchedBtnRef.classList.contains('add-watched'));
   toggleWatchedBtn();
 }
 export function handleQueueClick(event) {
@@ -87,10 +89,3 @@ export function handleQueueClick(event) {
   }
   toggleQueueBtn();
 }
-
-export {
-  toggleWatchedBtn,
-  toggleQueueBtn,
-  handleWatchedClick,
-  handleQueueClick,
-};
