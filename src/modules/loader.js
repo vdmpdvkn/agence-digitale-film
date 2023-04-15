@@ -13,11 +13,7 @@
 //   }
 // }
 
-// async function loadingPhotos(BASE_URL) {
-//   Notiflix.Loading.dots('Loading...');
-//   const response = await fetchPhotos(BASE_URL);
-//   Notiflix.Loading.remove();
-// }
+
 import { BASE_URL } from './api_key';
 import { refs } from './refs';
 
