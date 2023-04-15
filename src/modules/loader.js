@@ -1,7 +1,7 @@
 // import Notiflix from 'notiflix';
 // import axios from 'axios';
-import {BASE_URL} from './api_key'
-import { refs } from './refs';
+// import {BASE_URL} from './api_key'
+// import { refs } from './refs';
 // import { refs } from './refs';
 
 // async function fetchPhotos(BASE_URL) {
@@ -18,7 +18,8 @@ import { refs } from './refs';
 //   const response = await fetchPhotos(BASE_URL);
 //   Notiflix.Loading.remove();
 // }
-
+import { BASE_URL } from './api_key';
+import { refs } from './refs';
 
  refs.loaderButton.addEventListener('click', loadData)
  refs.spinner.document.querySelector('#spinner');
