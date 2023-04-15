@@ -3,7 +3,8 @@ import { refs } from './modules/refs';
 import {
   toggleWatchedBtn,
   toggleQueueBtn,
-  toggleButtonClass,
+  handleWatchedClick,
+  handleQueueClick,
 } from './modules/localStorageWatchQueue/localStorageWatchedQueue';
 
 import { onClickMyLibraryButton } from './modules/header/button-my-library';
