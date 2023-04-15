@@ -24,8 +24,12 @@ export default function renderMoviesList(moviesArr) {
       return `<li class="movie" data-id=${id}>
   <img src="${fullImageUrl}" alt="${movieName}"/>
   <p class="movie__title">${movieName}</p>
-  <p class="movie__genres">${movieGenres}</p>
+  <div class="movie__position">
+   <p class="movie__genres">${movieGenres}</p>
+  <p class="movie__genres">|</p>
   <p class="movie__year">${movieYear}</p>
+  </div>
+ 
   </li>
   `;
     })
