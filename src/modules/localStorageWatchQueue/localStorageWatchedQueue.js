@@ -4,12 +4,6 @@ import {
   getStorage,
 } from '../localStorage/localStorage';
 
-const watchedBtn = document.getElementById('js-watched');
-const queueBtn = document.getElementById('js-queue');
-
-watchedBtn.addEventListener('click', handleWatchedClick);
-queueBtn.addEventListener('click', handleQueueClick);
-
 function toggleWatchedBtn() {
   if (watchedBtn.classList.contains('add-watched')) {
     watchedBtn.classList.remove('add-watched');
@@ -42,7 +36,7 @@ function toggleQueueBtn() {
   }
 }
 
-function handleWatchedClick(event) {
+export function handleWatchedClick(event) {
   const button = event.target;
   const trailerId = button.dataset.id;
   const originalTitle = document.getElementById('original-title').textContent;
@@ -68,7 +62,7 @@ function handleWatchedClick(event) {
   console.log(watchedBtn.classList.contains('add-watched'));
   toggleWatchedBtn();
 }
-function handleQueueClick(event) {
+export function handleQueueClick(event) {
   const button = event.target;
   const trailerId = button.dataset.id;
   const originalTitle = document.getElementById('original-title').textContent;

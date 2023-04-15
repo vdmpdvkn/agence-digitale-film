@@ -21,6 +21,8 @@ export const refs = {
   galleryListRef: document.querySelector('#js-list'),
   formRef: document.querySelector('.header-form'),
   paginationRef: document.querySelector('#pagination'),
+  watchedBtnRef: document.getElementById('js-watched'),
+  queueBtnRef: document.getElementById('js-queue'),
   WATCHED: 'watched',
   QUEUE: 'queue',
 };
