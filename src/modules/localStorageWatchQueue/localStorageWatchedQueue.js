@@ -4,6 +4,12 @@ import {
   getStorage,
 } from '../localStorage/localStorage';
 
+const watchedBtn = document.getElementById('js-watched');
+const queueBtn = document.getElementById('js-queue');
+
+watchedBtn.addEventListener('click', handleWatchedClick);
+queueBtn.addEventListener('click', handleQueueClick);
+
 function toggleWatchedBtn() {
   if (watchedBtn.classList.contains('add-watched')) {
     watchedBtn.classList.remove('add-watched');
@@ -36,43 +42,55 @@ function toggleQueueBtn() {
   }
 }
 
-export function handleWatchedClick(event) {
+function handleWatchedClick(event) {
   const button = event.target;
   const trailerId = button.dataset.id;
   const originalTitle = document.getElementById('original-title').textContent;
-  const posterPath = document
+  const fullPosterPath = document
     .getElementById('film-modal-image')
     .getAttribute('src');
-  // const genreIds = document.getElementById('genre').textContent.split(', ');
-  const genreIds = document.getElementById('genre').textContent;
-  const popularity = document.getElementById('popularity').textContent;
+  const posterPath = fullPosterPath.slice(fullPosterPath.lastIndexOf('/') + 0);
+  const genreIdsString = document.getElementById('js-watched').getAttribute('data-genre_ids');
+
+const genreIds = genreIdsString ? genreIdsString.split(' ').map(id => parseInt(id)) : [12];
+console.log(genreIds);
+const releaseDate = document.getElementById('js-watched').getAttribute('data-release_date');
+console.log(releaseDate);
+
   const watchedMovies = getStorage('watched');
+
   if (button.classList.contains('add-watched')) {
     const filmInfo = {
       id: trailerId,
       original_title: originalTitle,
       poster_path: posterPath,
       genre_ids: genreIds,
-      popularity: popularity,
+      release_date: releaseDate,
     };
-    setStorage('watched', filmInfo);
+    watchedMovies.push(filmInfo);
+    setStorage('watched', watchedMovies);
   } else if (button.classList.contains('remove-watched')) {
     delFromStorage('watched', trailerId);
   }
-  console.log(watchedBtn.classList.contains('add-watched'));
+
   toggleWatchedBtn();
 }
-export function handleQueueClick(event) {
+
+function handleQueueClick(event) {
   const button = event.target;
   const trailerId = button.dataset.id;
   const originalTitle = document.getElementById('original-title').textContent;
-  const posterPath = document
+  const fullPosterPath = document
     .getElementById('film-modal-image')
     .getAttribute('src');
-  const genreIds = document.getElementById('genre').textContent;
-  // const genreIds = document.getElementById('genre').textContent.split(', ');
-  const popularity = document.getElementById('popularity').textContent;
+  const posterPath = fullPosterPath.slice(fullPosterPath.lastIndexOf('/') + 0);
+  const genreIdsString = document.getElementById('js-queue').getAttribute('data-genre_ids');
+
+const genreIds = genreIdsString ? genreIdsString.split(' ').map(id => parseInt(id)) : [12];
+console.log(genreIds);
+  
   const queuedMovies = getStorage('queue');
+
   if (button.classList.contains('add-queue')) {
     const filmInfo = {
       id: trailerId,
@@ -81,10 +99,12 @@ export function handleQueueClick(event) {
       genre_ids: genreIds,
       popularity: popularity,
     };
-    setStorage('queue', filmInfo);
+    queuedMovies.push(filmInfo);
+    setStorage('queue', queuedMovies);
   } else if (button.classList.contains('remove-queue')) {
     delFromStorage('queue', trailerId);
   }
+
   toggleQueueBtn();
 }
 
@@ -94,3 +114,15 @@ export {
   handleWatchedClick,
   handleQueueClick,
 };
+
+{
+  /* <button type="button" class="buttons-list__button buttons-list__button--red add-watched" id="js-watched" data-id="70796" data-original_title="K1 HERO's 3.2" data-title="K1 HERO's 3.2" data-name="undefined" data-poster_path="null" data-genre_ids="" data-release_date="">Add to Watched</button> */
+}
+
+{
+  /* <button type="button" class="add-queue buttons-list__button buttons-list__button--transparent" id="js-queue" data-id="948713" data-original_title="The Last Kingdom: Seven Kings Must Die" data-title="The Last Kingdom: Seven Kings Must Die" data-name="undefined" data-poster_path="/xUvSeFhdsJbKFOaHnB9TeTZpJKs.jpg" data-genre_ids="28 12 36 18 10752" data-release_date="2023-04-14">
+  Add to Queue
+  </button> */
+}
+
+// const genreIds = document.getElementById('genre').textContent.split(', ');
