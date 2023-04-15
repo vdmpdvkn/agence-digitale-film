@@ -3,6 +3,8 @@ import {
   delFromStorage,
   getStorage,
 } from '../localStorage/localStorage';
+import { refs } from '../refs';
+const { watchedBtnRef, queueBtnRef } = refs;
 
 const watchedBtn = document.getElementById('js-watched');
 const queueBtn = document.getElementById('js-queue');
@@ -11,34 +13,34 @@ watchedBtn.addEventListener('click', handleWatchedClick);
 queueBtn.addEventListener('click', handleQueueClick);
 
 function toggleWatchedBtn() {
-  if (watchedBtn.classList.contains('add-watched')) {
-    watchedBtn.classList.remove('add-watched');
-    watchedBtn.classList.add('remove-watched');
-    watchedBtn.textContent = 'Remove from Watched';
-    watchedBtn.disabled = false;
-    queueBtn.disabled = true;
+  if (watchedBtnRef.classList.contains('add-watched')) {
+    watchedBtnRef.classList.remove('add-watched');
+    watchedBtnRef.classList.add('remove-watched');
+    watchedBtnRef.textContent = 'Remove from Watched';
+    watchedBtnRef.disabled = false;
+    queueBtnRef.disabled = true;
   } else {
-    watchedBtn.classList.remove('remove-watched');
-    watchedBtn.classList.add('add-watched');
-    watchedBtn.textContent = 'Add to Watched';
-    watchedBtn.disabled = false;
-    queueBtn.disabled = false;
+    watchedBtnRef.classList.remove('remove-watched');
+    watchedBtnRef.classList.add('add-watched');
+    watchedBtnRef.textContent = 'Add to Watched';
+    watchedBtnRef.disabled = false;
+    queueBtnRef.disabled = false;
   }
 }
 
 function toggleQueueBtn() {
-  if (queueBtn.classList.contains('add-queue')) {
-    queueBtn.classList.remove('add-queue');
-    queueBtn.classList.add('remove-queue');
-    queueBtn.textContent = 'Remove from Queue';
-    queueBtn.disabled = false;
-    watchedBtn.disabled = true;
+  if (queueBtnRef.classList.contains('add-queue')) {
+    queueBtnRef.classList.remove('add-queue');
+    queueBtnRef.classList.add('remove-queue');
+    queueBtnRef.textContent = 'Remove from Queue';
+    queueBtnRef.disabled = false;
+    watchedBtnRef.disabled = true;
   } else {
-    queueBtn.classList.remove('remove-queue');
-    queueBtn.classList.add('add-queue');
-    queueBtn.textContent = 'Add to Queue';
-    queueBtn.disabled = false;
-    watchedBtn.disabled = false;
+    queueBtnRef.classList.remove('remove-queue');
+    queueBtnRef.classList.add('add-queue');
+    queueBtnRef.textContent = 'Add to Queue';
+    queueBtnRef.disabled = false;
+    watchedBtnRef.disabled = false;
   }
 }
 
@@ -107,6 +109,7 @@ console.log(genreIds);
 
   toggleQueueBtn();
 }
+o
 
 export {
   toggleWatchedBtn,
@@ -114,15 +117,3 @@ export {
   handleWatchedClick,
   handleQueueClick,
 };
-
-{
-  /* <button type="button" class="buttons-list__button buttons-list__button--red add-watched" id="js-watched" data-id="70796" data-original_title="K1 HERO's 3.2" data-title="K1 HERO's 3.2" data-name="undefined" data-poster_path="null" data-genre_ids="" data-release_date="">Add to Watched</button> */
-}
-
-{
-  /* <button type="button" class="add-queue buttons-list__button buttons-list__button--transparent" id="js-queue" data-id="948713" data-original_title="The Last Kingdom: Seven Kings Must Die" data-title="The Last Kingdom: Seven Kings Must Die" data-name="undefined" data-poster_path="/xUvSeFhdsJbKFOaHnB9TeTZpJKs.jpg" data-genre_ids="28 12 36 18 10752" data-release_date="2023-04-14">
-  Add to Queue
-  </button> */
-}
-
-// const genreIds = document.getElementById('genre').textContent.split(', ');

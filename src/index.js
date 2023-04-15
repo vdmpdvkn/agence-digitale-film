@@ -1,12 +1,5 @@
 import { refs } from './modules/refs';
 
-import {
-  toggleWatchedBtn,
-  toggleQueueBtn,
-  handleWatchedClick,
-  handleQueueClick,
-  } from './modules/localStorageWatchQueue/localStorageWatchedQueue';
-
 import { onClickMyLibraryButton } from './modules/header/button-my-library';
 import { onClickHomeButton } from './modules/header/button-home';
 import { onClickButtonWatched } from './modules/header/button-watched';
