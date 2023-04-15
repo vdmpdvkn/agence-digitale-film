@@ -2,6 +2,8 @@ import { refs } from '../refs';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 
+let paginationActive = false;
+
 const container = refs.paginationRef;
 const options = {
   // below default value of options
@@ -30,6 +32,10 @@ const options = {
       '</a>',
   },
 };
-const pagination = new Pagination(container, options);
+if (paginationActive) {
+  const pagination = new Pagination(container, options);
+} else {
+  refs.paginationRef.style.display = 'none';
+}
 
 export { pagination };
