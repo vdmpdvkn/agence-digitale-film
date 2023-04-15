@@ -4,9 +4,11 @@ const imageLink = 'https://image.tmdb.org/t/p/w500';
 export function renderFilmInfo(object) {
   const {
     original_title,
+    name,
+    title,
     genres,
     overview,
-    popularity,
+    popularity = '0',
     vote_count,
     vote_average,
     poster_path,
@@ -50,12 +52,16 @@ export function renderFilmInfo(object) {
 
   filmAddToWatchedBtnRef.dataset.id = id;
   filmAddToWatchedBtnRef.dataset.original_title = original_title;
+  filmAddToWatchedBtnRef.dataset.title = title;
+  filmAddToWatchedBtnRef.dataset.name = name;
   filmAddToWatchedBtnRef.dataset.poster_path = poster_path;
   filmAddToWatchedBtnRef.dataset.genre_ids = filmGenresIds;
   filmAddToWatchedBtnRef.dataset.release_date = release_date;
 
   filmAddToQueueBtnRef.dataset.id = id;
   filmAddToQueueBtnRef.dataset.original_title = original_title;
+  filmAddToQueueBtnRef.dataset.title = title;
+  filmAddToQueueBtnRef.dataset.name = name;
   filmAddToQueueBtnRef.dataset.poster_path = poster_path;
   filmAddToQueueBtnRef.dataset.genre_ids = filmGenresIds;
   filmAddToQueueBtnRef.dataset.release_date = release_date;
