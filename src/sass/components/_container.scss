@@ -12,7 +12,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
-    justify-content: center;
   }
 
   @media screen and (min-width: 1280px) {
@@ -74,9 +73,6 @@ img {
   justify-content: flex-start;
   align-items: center;
   display: flex;
-  @media screen and (max-width: 767px) {
-    margin-bottom: 20px;
-  }
 }
 
 .movie__genres {
