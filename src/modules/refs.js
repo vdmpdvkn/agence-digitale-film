@@ -3,6 +3,8 @@ export const refs = {
   buttonRefLibrary: document.querySelector('#button-header-library'),
   divRefButtonLibrary: document.querySelector('.header-logo--position'),
   divRefWatchedQueue: document.querySelector('.header-button__library'),
+  buttonRefWatched: document.querySelector('#button-header-watched'),
+  buttonRefQueue: document.querySelector('#button-header-queue'),
   filmNameRef: document.querySelector('#film-name'),
   filmVotesRef: document.querySelector('#votes'),
   filmAverageVotesRef: document.querySelector('#average-votes'),
