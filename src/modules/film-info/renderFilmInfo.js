@@ -11,6 +11,7 @@ export function renderFilmInfo(object) {
     vote_average,
     poster_path,
     id,
+    release_date,
   } = object;
   console.log('object->', object);
 
@@ -45,7 +46,19 @@ export function renderFilmInfo(object) {
   const filmGenres = genres.map(genre => genre.name);
   filmGenreRef.textContent = filmGenres.join(', ');
 
+  const filmGenresIds = genres.map(genre => genre.id).join(' ');
+
   filmAddToWatchedBtnRef.dataset.id = id;
+  filmAddToWatchedBtnRef.dataset.original_title = original_title;
+  filmAddToWatchedBtnRef.dataset.poster_path = poster_path;
+  filmAddToWatchedBtnRef.dataset.genre_ids = filmGenresIds;
+  filmAddToWatchedBtnRef.dataset.release_date = release_date;
+
   filmAddToQueueBtnRef.dataset.id = id;
+  filmAddToQueueBtnRef.dataset.original_title = original_title;
+  filmAddToQueueBtnRef.dataset.poster_path = poster_path;
+  filmAddToQueueBtnRef.dataset.genre_ids = filmGenresIds;
+  filmAddToQueueBtnRef.dataset.release_date = release_date;
+
   filmWatchTrailerBtnRef.dataset.id = id;
 }
