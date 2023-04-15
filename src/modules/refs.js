@@ -11,7 +11,8 @@ export const refs = {
   filmGenreRef: document.querySelector('#genre'),
   filmOverviewRef: document.querySelector('#filmOverview'),
   filmImageRef: document.querySelector('#film-image'),
-  
+  loaderButton: document.querySelector('#button-form-search'),
+  spinner: document.getElementById('#spinner'),
 
   WATCHED: watched,
   QUEUE: queue,

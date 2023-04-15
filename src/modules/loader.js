@@ -1,6 +1,7 @@
 // import Notiflix from 'notiflix';
 // import axios from 'axios';
 import {BASE_URL} from './api_key'
+import { refs } from './refs';
 // import { refs } from './refs';
 
 // async function fetchPhotos(BASE_URL) {
@@ -19,7 +20,8 @@ import {BASE_URL} from './api_key'
 // }
 
 
- const spinner = document.getElementById('spinner');
+ refs.loaderButton.addEventListener('click', loadData)
+ refs.spinner.document.getElementById('#spinner');
 
 export function loadData() {
   spinner.removeAttribute('hidden');
