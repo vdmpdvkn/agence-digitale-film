@@ -1,4 +1,8 @@
 import { refs } from '../refs';
+import {
+  handleQueueClick,
+  handleWatchedClick,
+} from '../localStorageWatchQueue/localStorageWatchedQueue';
 const { backdropRef, watchedBtnRef, queueBtnRef } = refs;
 
 export function closeFilmInfoOnBackdropClick(evt) {

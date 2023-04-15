@@ -4,6 +4,9 @@
   margin: 20 auto;
   width: 280px;
   height: 460px;
+  @media screen and (max-width: $phone) {
+    width: 100%;
+  }
 
   @media screen and (min-width: 768px) {
     width: 704px;
@@ -63,10 +66,10 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: $desktop) {
   .header {
     margin: 32px auto;
-    width: 1200px;
+    width: 1216px;
     background-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.49),
@@ -78,7 +81,7 @@
   @media (min-devaice-pixel-ratio: 2), (min-resolution: 192dpi) {
     .header {
       margin: 32px auto;
-      width: 1200px;
+      width: 1216px;
       background-image: linear-gradient(
           to right,
           rgba(0, 0, 0, 0.49),
@@ -320,19 +323,19 @@
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
-      animation-name: fadeIn;
-      animation-duration: 2s;
-      animation-fill-mode: forwards;
-    
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-    
-        to {
-          opacity: 1;
-        }
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
       }
+
+      to {
+        opacity: 1;
+      }
+    }
   }
 }
 .header-button__library {
@@ -357,15 +360,15 @@
     left: 1063px;
   }
 }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-  
-      to {
-        opacity: 1;
-      }
-    }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 
 .header-button__library--watched {
   width: 102px;
