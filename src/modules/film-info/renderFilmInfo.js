@@ -1,5 +1,5 @@
 import { refs } from '../refs';
-
+import samplePlaceholder from '../../images/sample_placeholder.jpg';
 const imageLink = 'https://image.tmdb.org/t/p/w500';
 export function renderFilmInfo(object) {
   const {
@@ -32,6 +32,9 @@ export function renderFilmInfo(object) {
   } = refs;
 
   filmImageRef.src = `${imageLink}${poster_path}`;
+  if (!poster_path) {
+    filmImageRef.src = samplePlaceholder;
+  }
   filmImageRef.alt = original_title;
 
   filmNameRef.textContent = original_title;
