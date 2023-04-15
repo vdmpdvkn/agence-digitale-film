@@ -18,7 +18,7 @@ export const refs = {
   filmWatchTrailerBtnRef: document.querySelector('#js-trailer'),
   galleryListRef: document.querySelector('#js-list'),
   formRef: document.querySelector('.header-form'),
-
+  paginationRef: document.querySelector('#pagination'),
   WATCHED: 'watched',
   QUEUE: 'queue',
 };

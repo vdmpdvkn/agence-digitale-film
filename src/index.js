@@ -11,8 +11,9 @@ import { onClickHomeButton } from './modules/header/button-home';
 import { openFilmInfoOnPosterClick } from './modules/film-info/openFilmInfoOnPosterClick';
 // import { getStartingArray } from './modules/starting-fetch/starting-fetch';
 // import renderMoviesList from './modules/html-render';
-import './modules/starting-fetch/starting-fetch';
+import { startingRender } from './modules/starting-fetch/starting-fetch';
 import { fetchFilmOfSearch } from './modules/search/fetch';
+import { pagination } from './modules/pagination/pagination';
 // getStartingArray().then(() => {
 //   renderMoviesList(startingArr);
 // });
@@ -25,3 +26,5 @@ refs.formRef.addEventListener('submit', fetchFilmOfSearch);
 refs.buttonRefHome.addEventListener('click', onClickHomeButton);
 refs.buttonRefLibrary.addEventListener('click', onClickMyLibraryButton);
 refs.galleryListRef.addEventListener('click', openFilmInfoOnPosterClick);
+
+startingRender();

@@ -10,7 +10,7 @@ const startingFetch = async () => {
 
 const startingArr = [];
 
-export const getStartingArray = async () => {
+const getStartingArray = async () => {
   try {
     const result = await startingFetch();
     startingArr.push(...result);
@@ -19,6 +19,8 @@ export const getStartingArray = async () => {
     console.error('Error:', error);
   }
 };
-getStartingArray().then(() => {
+export const startingRender = async () => { 
+  await getStartingArray().then(() => {
   renderMoviesList(startingArr);
 });
+}
