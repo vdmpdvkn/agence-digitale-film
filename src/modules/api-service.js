@@ -7,6 +7,15 @@ export const apiRefs = {
   MOVIE_DETAILS: 'movieDetails',
   MOVIE_VIDEO: 'movieVideo',
 };
+
+// пропоную замінити набір вхідних параметрів (param, id = 0, page = 1, query = '') на обєкт параметрів
+//
+// ви передаєте у функцію НЕ окремі параметри а цей обєкт де заповнюєте потрібні параметри
+// { param: apiRefs.TRENDING, id : 0, page : 1, query : '' }
+//
+// це перший рядок функції
+// export default async function fetchApi({param = apiRefs.TRENDING, id = 0, page = 1, query = ''}) {
+
 export default async function fetchApi(param, id = 0, page = 1, query = '') {
   const endpoints = {
     trending: `/trending/all/day?api_key=${API_KEY}`,
