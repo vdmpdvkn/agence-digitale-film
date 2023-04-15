@@ -61,7 +61,7 @@ function handleWatchedClick(event) {
       genre_ids: genreIds,
       popularity: popularity,
     };
-    setStorage('watched', filmInfo, watchedMovies);
+    setStorage('watched', filmInfo);
   } else if (button.classList.contains('remove-watched')) {
     delFromStorage('watched', trailerId);
   }
@@ -86,7 +86,7 @@ function handleQueueClick(event) {
       genre_ids: genreIds,
       popularity: popularity,
     };
-    setStorage('queue', filmInfo, queuedMovies);
+    setStorage('queue', filmInfo);
   } else if (button.classList.contains('remove-queue')) {
     delFromStorage('queue', trailerId);
   }
