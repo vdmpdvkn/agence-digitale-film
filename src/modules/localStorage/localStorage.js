@@ -38,7 +38,7 @@ export const getItemFromStorage = (section, id) => {
 }
 
 export const setStorage = (section, filmInfo) => {
-  dataArr = getStorage(section);
+  const dataArr = getStorage(section);
   if (dataArr.find(film => film.id === filmInfo.id)) {
     Notify.info(`You have this film in ${section} already`);
     return; // if saved already
@@ -51,7 +51,7 @@ export const setStorage = (section, filmInfo) => {
 };
 
 export const delFromStorage = (section, id) => {
-  dataArr = getStorage(section);
+  const dataArr = getStorage(section);
   if (!dataArr.find(film => film.id === id)) {
     return;
   }
