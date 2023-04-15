@@ -5,7 +5,7 @@ import {
   toggleQueueBtn,
   handleWatchedClick,
   handleQueueClick,
-} from './modules/localStorageWatchQueue/localStorageWatchedQueue';
+  } from './modules/localStorageWatchQueue/localStorageWatchedQueue';
 
 import { onClickMyLibraryButton } from './modules/header/button-my-library';
 import { onClickHomeButton } from './modules/header/button-home';
