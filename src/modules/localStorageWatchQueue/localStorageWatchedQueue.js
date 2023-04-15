@@ -1,3 +1,6 @@
+
+import { setStorage, delFromStorage, getStorage } from "../localStorage/localStorage";
+
 const watchedBtn = document.getElementById('js-watched');
 const queueBtn = document.getElementById('js-queue');
 
@@ -6,8 +9,8 @@ const buttonStates = {
   queue: { state: 'add', text: 'Add to Queue' },
 };
 
-watchedBtn.addEventListener('click', toggleWatchedBtn);
-queueBtn.addEventListener('click', toggleQueueBtn);
+watchedBtn.addEventListener('click', handleWatchedClick);
+queueBtn.addEventListener('click', handleQueueClick);
 
 function toggleWatchedBtn() {
   const buttonState = buttonStates.watched;
@@ -53,6 +56,50 @@ function toggleQueueBtn() {
   }
 }
 
+function handleWatchedClick(event) {
+  const button = event.target;
+  const trailerId = button.dataset.id;
+  const originalTitle = document.getElementById("original-title").textContent;
+  const posterPath = document.getElementById("film-modal-image").getAttribute("src");
+  const genreIds = document.getElementById("genre").textContent;
+  const popularity = document.getElementById("popularity").textContent;
+  const watchedMovies = getStorage("watched");
+  if (button.classList.contains("add-watched")) {
+  const filmInfo = {
+  id: trailerId,
+  original_title: originalTitle,
+  poster_path: posterPath,
+  genre_ids: genreIds,
+  popularity: popularity
+  };
+  setStorage("watched", filmInfo, watchedMovies);
+  } else if (button.classList.contains("remove-watched")) {
+  delFromStorage("watched", trailerId);
+  }
+  toggleWatchedBtn();
+  }
+  function handleQueueClick(event) {
+  const button = event.target;
+  const trailerId = button.dataset.id;
+  const originalTitle = document.getElementById("original-title").textContent;
+  const posterPath = document.getElementById("film-modal-image").getAttribute("src");
+  const genreIds = document.getElementById("genre").textContent;
+  const popularity = document.getElementById("popularity").textContent;
+  const queuedMovies = getStorage("queue");
+  if (button.classList.contains("add-queue")) {
+  const filmInfo = {
+  id: trailerId,
+  original_title: originalTitle,
+  poster_path: posterPath,
+  genre_ids: genreIds,
+  popularity: popularity
+  };
+  setStorage("queue", filmInfo, queuedMovies);
+  } else if (button.classList.contains("remove-queue")) {
+  delFromStorage("queue", trailerId);
+  }
+  toggleQueueBtn();
+  }
   
 
-  export {toggleWatchedBtn, toggleQueueBtn, toggleButtonClass}
+  export {toggleWatchedBtn, toggleQueueBtn, handleWatchedClick, handleQueueClick}
