@@ -85,6 +85,7 @@
     height: 348px;
     background-color: grey;
     transition: 250ms $time-function;
+    border-radius: 25px;
 
     @media screen and (min-width: $tablet) {
       min-width: 264px;
