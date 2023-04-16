@@ -10,7 +10,8 @@ export async function playVideo() {
   modalPlayer.classList.remove('is-hidden');
   playerEl.style.display = 'block';
   playerEl.innerHTML = '';
-  const data = await fetchApi({ param: apiRefs.MOVIE_VIDEO, id: id });
+  try {
+  const data = await fetchApi(apiRefs.MOVIE_VIDEO, id);
   const keyVideo = await data.results[0].key;
   const player = new Plyr('#player', {});
   const htmlIframe = `<iframe
@@ -20,19 +21,21 @@ export async function playVideo() {
     allow="autoplay"
   ></iframe>`;
   playerEl.innerHTML = htmlIframe;
-  player.addEventListener('keydown', closePlayerOnEsc);
-  try {
+  document.addEventListener('click', closePlayerOnEsc);
+  
     window.player = player;
+    player.on(error, () => {
+      console.log('error= '+error);
+    })
   } catch (e) {
-    console.log(e);
+    return;
   }
 }
 function closePlayerOnEsc(e) {
-  if (e.code !== 'Escape') {
+  if (!e.target.classList.contains('backdrop')) {
     return;
   }
   player.destroy();
-  console.log(e.currentTarget);
   modalPlayer.classList.add('is-hidden');
   playerEl.innerHTML = '';
 }
