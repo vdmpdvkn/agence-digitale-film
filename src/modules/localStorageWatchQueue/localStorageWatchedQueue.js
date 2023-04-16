@@ -54,8 +54,8 @@ import {
   const genreIdsString = document.getElementById('js-queue').getAttribute('data-genre_ids');
   const genreIds = genreIdsString ? genreIdsString.split(' ').map(id => parseInt(id)) : [12];
   const releaseDate = document.getElementById('js-queue').getAttribute('data-release_date');
-  const name = document.getElementById('js-queue').getAttribute('name');
-    const title = document.getElementById('js-queue').getAttribute('title');
+  const name = button.dataset.name;
+    const title = button.dataset.title;
   // const queuedMovies = getStorage(refs.QUEUE);
   if (button.classList.contains('add-queue')) {
     const filmInfo = {
