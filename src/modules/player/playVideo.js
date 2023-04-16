@@ -1,13 +1,11 @@
-import {apiRefs } from '../api-service';
+import { apiRefs } from '../api-service';
 import fetchApi from '../api-service';
 import { refs } from '../refs';
 import Plyr from 'plyr';
 
-export { playVideo, closePlayerOnEsc };
-  
 const playerEl = document.querySelector('.plyr__video-embed');
 
-async function playVideo() {
+export async function playVideo() {
   const id = refs.filmWatchTrailerBtnRef.dataset.id;
   playerEl.style.display = 'block';
   playerEl.innerHTML = '';
@@ -21,21 +19,20 @@ async function playVideo() {
     allow="autoplay"
   ></iframe>`;
   playerEl.innerHTML = htmlIframe;
-  document.addEventListener('keydown',closePlayerOnEsc);
+  document.addEventListener('keydown', closePlayerOnEsc);
   try {
     window.player = player;
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e);
   }
-  }
+}
 function closePlayerOnEsc(e) {
-      if (e.code !== 'Escape') {
-      return;
+  if (e.code !== 'Escape') {
+    return;
   }
   player.destroy();
-  
+
   console.log(e.target);
-    playerEl.style.display = 'none';
-    playerEl.innerHTML='';
+  playerEl.style.display = 'none';
+  playerEl.innerHTML = '';
 }

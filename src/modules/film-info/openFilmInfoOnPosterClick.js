@@ -12,16 +12,21 @@ import {
   handleWatchedClick,
 } from '../localStorageWatchQueue/localStorageWatchedQueue';
 import { getItemFromStorage, getStorage } from '../localStorage/localStorage';
-
+import { playVideo } from '../player/playVideo';
 export function openFilmInfoOnPosterClick(evt) {
   if (evt.target.nodeName !== 'LI' && evt.target.parentNode.nodeName !== 'LI') {
+    console.log(evt.target.parentNode.parentNode.nodeName);
     return;
   }
 
-
-const { backdropRef, filmInfoCloseBtnRef, watchedBtnRef, queueBtnRef } = refs;
-// let filmId;
-
+  const {
+    backdropRef,
+    filmInfoCloseBtnRef,
+    watchedBtnRef,
+    queueBtnRef,
+    filmWatchTrailerBtnRef,
+  } = refs;
+  let filmId;
 
   fetchApi(
     apiRefs.MOVIE_DETAILS,
@@ -69,6 +74,8 @@ const { backdropRef, filmInfoCloseBtnRef, watchedBtnRef, queueBtnRef } = refs;
       backdropRef.classList.remove('is-hidden');
     });
   document.body.style.overflow = 'hidden';
+  document.addEventListener('keydown', closeFilmInfoOnEsc);
+  filmWatchTrailerBtnRef.addEventListener('click', playVideo);
   backdropRef.addEventListener('click', closeFilmInfoOnBackdropClick);
   filmInfoCloseBtnRef.addEventListener('click', closeFilmInfoOnCloseBtnClick);
 }
