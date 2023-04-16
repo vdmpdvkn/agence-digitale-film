@@ -1,10 +1,8 @@
 import { refs } from '../refs';
-import { Notify } from 'notiflix';
 import fetchApi, { apiRefs } from '../api-service';
 import renderMoviesList from '../html-render';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
-import { BASE_URL, API_KEY } from '../api-service';
 
 // ref.alertMessage = document.querySelector('.header-form--search'),
 refs.formRef.addEventListener('submit', fetchFilmOfSearch);
@@ -13,9 +11,7 @@ let pagination;
 
 export async function fetchFilmOfSearch(e) {
   e.preventDefault();
-
   const searchQuery = e.currentTarget.elements.film.value.trim();
-  e.currentTarget.reset();
 
   if (pagination) {
     pagination.reset();
@@ -27,25 +23,28 @@ export async function fetchFilmOfSearch(e) {
     query: searchQuery,
   });
   const dataEl = data.total_results;
-  console.log(dataEl);
-  console.log(data);
+//   console.log(dataEl);
+//   console.log(data);
 
-  if (searchQuery === '') {
-    refs.alertMessage.style.display = 'none';
-    Notify.warning('Searching starts after providing data to search!');
-    return;
-  } else if (dataEl === 0) {
-    // refs.alertMessage.classList.add('visually-hidden');
+if (searchQuery === '') {
+    refs.alertMessage.textContent =
+      'Searching starts after providing data to search!';
     refs.alertMessage.style.display = 'flex';
-    Notify.warning(
-      'Search result not successful. Enter the correct movie name!'
-    );
     return;
-  } else {
-    refs.alertMessage.style.display = 'none';
-    Notify.success(` We found ${data.total_results} films.`);
-  }
-  renderMoviesList(data.results);
+} else if (dataEl === 0) {
+    refs.alertMessage.textContent =
+      'Search result not successful. Enter the correct movie name!';
+    refs.alertMessage.style.display = 'flex';
+    return;
+} else {
+    refs.alertMessage.textContent =
+      'Successful!';
+    refs.alertMessage.style.display = 'flex';
+
+}
+refs.errorSearchRef.addEventListener('input', (errorSearch));
+
+renderMoviesList(data.results);
 
   const paginationParams = {
     totalItems: data.total_results,
@@ -99,3 +98,4 @@ export async function fetchFilmOfSearch(e) {
 //   renderMoviesList(data.results);
 
 // }
+
