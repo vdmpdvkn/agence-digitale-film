@@ -13,7 +13,11 @@ export async function fetchFilmOfSearch(e) {
   const searchQuery = e.currentTarget.elements.film.value.trim();
   e.currentTarget.reset(); 
 
-  const data = await fetchApi(apiRefs.SEARCH, '', '', searchQuery, );
+  const data = await fetchApi({
+    param: apiRefs.SEARCH,
+    page: 1,
+    query: searchQuery,
+  });
   const dataEl = data.total_results;
   console.log(dataEl);
   console.log(data);

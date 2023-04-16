@@ -9,7 +9,7 @@ export async function playVideo() {
   const id = refs.filmWatchTrailerBtnRef.dataset.id;
   playerEl.style.display = 'block';
   playerEl.innerHTML = '';
-  const data = await fetchApi(apiRefs.MOVIE_VIDEO, id);
+  const data = await fetchApi({ param: apiRefs.MOVIE_VIDEO, id: id });
   const keyVideo = await data.results[0].key;
   const player = new Plyr('#player', {});
   const htmlIframe = `<iframe
