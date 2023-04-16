@@ -55,14 +55,36 @@
       gap: 16px;
     }
   }
+  .trailer-btn {
+    width: 45px;
+    height: 45px;
+    padding-left: 2px;
+    background-color: getcolor(accent-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0.5;
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:hover > svg,
+    &:focus > svg {
+      fill: getcolor(white-color);
+    }
+  }
+  &__image-wrapper {
+    position: relative;
+  }
   &__image {
     width: 240px;
     height: 348px;
     background-color: grey;
     transition: 250ms $time-function;
-    &--wrapper {
-      position: relative;
-    }
+
     @media screen and (min-width: $tablet) {
       min-width: 264px;
       height: 350px;
@@ -196,11 +218,6 @@
         background-color: transparent;
         box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
       }
-    }
-    &--center {
-      margin-top: 10px;
-      border: 2px solid getcolor(accent-color);
-      position: absolute;
     }
   }
 }
