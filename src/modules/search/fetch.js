@@ -3,10 +3,14 @@ import { Notify } from 'notiflix';
 import fetchApi from '../api-service';
 import { apiRefs } from '../api-service';
 import renderMoviesList from '../html-render';
+import debounce from 'debounce';
 
-
-// ref.alertMessage = document.querySelector('.header-form--search'),
 refs.formRef.addEventListener('submit', fetchFilmOfSearch);
+refs.errorSearchRef.addEventListener('input', debounce(errorSearch,3000));
+
+export function errorSearch() {
+  refs.alertMessage.style.display = 'none';
+}
 
 export async function fetchFilmOfSearch(e) {
   e.preventDefault();
@@ -18,9 +22,8 @@ export async function fetchFilmOfSearch(e) {
   console.log(dataEl);
   console.log(data);
 
-
 if (searchQuery === '') {
-  refs.alertMessage.style.display = 'none';
+  // refs.alertMessage.style.display = 'none';
   Notify.warning('Searching starts after providing data to search!');
   return;
 } else if (dataEl === 0) {
@@ -56,4 +59,14 @@ renderMoviesList(data.results);
 
 //   renderMoviesList(data.results);
 
+// }
+
+
+
+
+// export function errorSearch() {
+//   refs.alertMessage.style.display = 'none';
+//   setTimeout(() => {
+//   refs.alertMessage.style.display = 'none';
+//   }, 2000);
 // }
