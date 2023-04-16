@@ -10,10 +10,7 @@ export function closeFilmInfoOnBackdropClick(evt) {
     return;
   }
   evt.currentTarget.classList.add('is-hidden');
-
-  evt.currentTarget.removeEventListener('click', closeFilmInfoOnBackdropClick);
-  watchedBtnRef.removeEventListener('click', handleWatchedClick);
-  queueBtnRef.removeEventListener('click', handleQueueClick);
+  revertChangesOnModalClose(evt);
 }
 export function closeFilmInfoOnEsc(evt) {
   if (evt.code !== 'Escape') {
@@ -21,14 +18,14 @@ export function closeFilmInfoOnEsc(evt) {
   }
 
   backdropRef.classList.add('is-hidden');
-
-  document.removeEventListener('keydown', closeFilmInfoOnEsc);
-  watchedBtnRef.removeEventListener('click', handleWatchedClick);
-  queueBtnRef.removeEventListener('click', handleQueueClick);
+  revertChangesOnModalClose(evt);
 }
 export function closeFilmInfoOnCloseBtnClick(evt) {
   backdropRef.classList.add('is-hidden');
-
+  revertChangesOnModalClose(evt);
+}
+function revertChangesOnModalClose(evt) {
+  document.body.style.overflow = '';
   evt.currentTarget.removeEventListener('click', closeFilmInfoOnCloseBtnClick);
   watchedBtnRef.removeEventListener('click', handleWatchedClick);
   queueBtnRef.removeEventListener('click', handleQueueClick);

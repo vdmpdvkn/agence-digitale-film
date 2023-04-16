@@ -149,6 +149,7 @@
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+  transition: 250ms $time-function;
   @media screen and (min-width: $tablet) {
     margin-right: 28px;
   }
