@@ -1,41 +1,41 @@
 import { refs } from '../refs';
-import { Notify } from 'notiflix';
 import fetchApi from '../api-service';
 import { apiRefs } from '../api-service';
 import renderMoviesList from '../html-render';
-import debounce from 'debounce';
 
 refs.formRef.addEventListener('submit', fetchFilmOfSearch);
-refs.errorSearchRef.addEventListener('input', debounce(errorSearch,3000));
 
 export function errorSearch() {
   refs.alertMessage.style.display = 'none';
 }
-
+ 
 export async function fetchFilmOfSearch(e) {
   e.preventDefault();
   const searchQuery = e.currentTarget.elements.film.value.trim();
-  e.currentTarget.reset(); 
 
   const data = await fetchApi(apiRefs.SEARCH, '', '', searchQuery, );
   const dataEl = data.total_results;
-  console.log(dataEl);
-  console.log(data);
+  // console.log(dataEl);
+  // console.log(data);
 
 if (searchQuery === '') {
-  // refs.alertMessage.style.display = 'none';
-  Notify.warning('Searching starts after providing data to search!');
-  return;
+    refs.alertMessage.textContent =
+      'Searching starts after providing data to search!';
+    refs.alertMessage.style.display = 'flex';
+    return;
 } else if (dataEl === 0) {
-  // refs.alertMessage.classList.add('visually-hidden');
-  refs.alertMessage.style.display = 'flex';
-  Notify.warning('Search result not successful. Enter the correct movie name!');
-  return;
-
+    refs.alertMessage.textContent =
+      'Search result not successful. Enter the correct movie name!';
+    refs.alertMessage.style.display = 'flex';
+    return;
 } else {
-  refs.alertMessage.style.display = 'none';
-  Notify.success(` We found ${data.total_results} films.`);
+    refs.alertMessage.textContent =
+      'Successful!';
+    refs.alertMessage.style.display = 'flex';
+
 }
+refs.errorSearchRef.addEventListener('input', (errorSearch));
+
 renderMoviesList(data.results);
 }
 
