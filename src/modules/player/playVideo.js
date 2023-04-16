@@ -39,3 +39,4 @@ function closePlayerOnEsc(e) {
   modalPlayer.classList.add('is-hidden');
   playerEl.innerHTML = '';
 }
+// 1
