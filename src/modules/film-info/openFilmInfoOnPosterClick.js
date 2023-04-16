@@ -28,7 +28,7 @@ Number(evt.target.dataset.id ?? evt.target.parentNode.dataset.id)
 .then(data => {
 renderFilmInfo(data);
 console.log(data.id);
-filmId = data.id;
+const filmId = data.id;
 
 const localStorageDataWatched = getStorage(refs.WATCHED);
 const itemInWatched = localStorageDataWatched ? localStorageDataWatched.find(item => item.id === filmId.toString()) : null;
