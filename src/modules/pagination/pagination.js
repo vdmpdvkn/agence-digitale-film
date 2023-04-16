@@ -1,41 +1,48 @@
 import { refs } from '../refs';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
+import renderMoviesList from '../html-render';
+import { BASE_URL, API_KEY } from '../api-service';
 
-let paginationActive = false;
+// let paginationActive = false;
 
 const container = refs.paginationRef;
-const options = {
-  // below default value of options
-  totalItems: 100,
-  itemsPerPage: 10,
-  visiblePages: 5,
-  page: 1,
-  centerAlign: true,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
-  template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    currentPage:
-      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>',
-  },
-};
-if (paginationActive) {
-  const pagination = new Pagination(container, options);
-} else {
-  refs.paginationRef.style.display = 'none';
-}
+const searchQueryParameter = 'ukraine';
 
-export { pagination };
+const searchQueryOptions = {
+  searchURL: `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchQueryParameter}`,
+  page: 1,
+  totalPages: 7,
+};
+
+const pagination = new Pagination(container, {
+  totalItems: searchQueryOptions.totalPages * 20, // Assuming 20 items per page
+  itemsPerPage: 20, // Number of items to display per page
+  visiblePages: 5, // Number of visible pages in the pagination
+  currentPage: searchQueryOptions.page, // Current page
+  centerAlign: true,
+});
+
+pagination.on('afterMove', eventData => {
+  searchQueryOptions.page = eventData.page;
+
+  performMovieSearch();
+});
+
+function performMovieSearch() {
+  const searchURL = `${searchQueryOptions.searchURL}&page=${searchQueryOptions.page}`;
+  fetch(searchURL)
+    .then(response => response.json())
+    .then(data => {
+      // Update the UI with the movie search results
+      renderMoviesList(data.results);
+    })
+    .catch(error => {
+      console.error('Error performing movie search:', error);
+    });
+}
+// if (paginationActive) {
+//   const pagination = new Pagination(container, options);
+// } else {
+//   refs.paginationRef.style.display = 'none';
+// }
