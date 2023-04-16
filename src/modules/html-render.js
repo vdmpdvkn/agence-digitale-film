@@ -5,6 +5,11 @@ const imageSize = 'w500';
 import samplePlaceholder from '../images/sample_placeholder.jpg';
 
 export default function renderMoviesList(moviesArr) {
+  if (moviesArr.length === 0) {
+    refs.galleryListRef.innerHTML =
+      '<p class="error_localstoragy">Nothing here...🤷🏽‍♀️</p>';
+    return;
+  }
   const markup = moviesArr
     .map(movie => {
       const {

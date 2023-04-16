@@ -26,7 +26,7 @@ export const getStorage = section => {
   const dataArr = [];
   const data = JSON.parse(localStorage.getItem(section));
   if (!data) {
-    Notify.info(`You have NO films in ${section}`);
+    // Notify.info(`You have NO films in ${section}`);
     return dataArr;
   }
   dataArr.push(...data);
