@@ -2,11 +2,12 @@ import { apiRefs } from '../api-service';
 import fetchApi from '../api-service';
 import { refs } from '../refs';
 import Plyr from 'plyr';
-
-const playerEl = document.querySelector('.plyr__video-embed');
+const modalPlayer = document.getElementById('modal-player');
+const playerEl = document.getElementById('player');
 
 export async function playVideo() {
   const id = refs.filmWatchTrailerBtnRef.dataset.id;
+  modalPlayer.classList.remove('is-hidden');
   playerEl.style.display = 'block';
   playerEl.innerHTML = '';
   const data = await fetchApi(apiRefs.MOVIE_VIDEO, id);
@@ -31,8 +32,7 @@ function closePlayerOnEsc(e) {
     return;
   }
   player.destroy();
-
-  console.log(e.target);
-  playerEl.style.display = 'none';
+  // console.log(e.target);
+  modalPlayer.classList.add('is-hidden');
   playerEl.innerHTML = '';
 }

@@ -5,7 +5,7 @@
   position: fixed;
   margin: 20px auto;
   min-width: $phone;
-  z-index: 3;
+  // z-index: 3;
 
   @media screen and (min-width: $tablet) {
     min-width: $tablet;
