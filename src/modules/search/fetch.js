@@ -6,6 +6,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
 
 refs.formRef.addEventListener('submit', fetchFilmOfSearch);
+refs.errorSearchRef.addEventListener('input', errorSearch);
 
 export function errorSearch() {
   refs.alertMessage.style.display = 'none';
@@ -44,7 +45,6 @@ export async function fetchFilmOfSearch(e) {
     refs.alertMessage.textContent = 'Successful!';
     refs.alertMessage.style.display = 'flex';
   }
-  refs.errorSearchRef.addEventListener('input', errorSearch);
 
   renderMoviesList(data.results);
 
@@ -82,28 +82,3 @@ export async function fetchFilmOfSearch(e) {
       });
   }
 }
-
-// refs.formRef.addEventListener('submit', fetchFilmOfSearch);
-
-// export async function fetchFilmOfSearch(e) {
-//   e.preventDefault();
-//   const searchQuery = e.currentTarget.elements.film.value.trim();
-
-//   if (searchQuery === '') {
-//     Notify.warning('Searching starts after providing data to search!');
-//     return;
-//   }
-
-//   const data = await fetchApi(apiRefs.SEARCH, '', '', searchQuery);
-//   console.log(data);
-
-//   renderMoviesList(data.results);
-
-// }
-
-// export function errorSearch() {
-//   refs.alertMessage.style.display = 'none';
-//   setTimeout(() => {
-//   refs.alertMessage.style.display = 'none';
-//   }, 2000);
-// }
