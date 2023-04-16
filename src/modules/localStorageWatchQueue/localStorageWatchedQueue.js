@@ -9,7 +9,7 @@ import {
   export function handleWatchedClick(event) {
   const button = event.target;
   const trailerId = button.dataset.id;
-  const originalTitle = document.getElementById('original-title').textContent;
+  const originalTitle = document.getElementById('js-watched').getAttribute('original_title');
   const fullPosterPath = document
   .getElementById('film-modal-image')
   .getAttribute('src');
@@ -17,8 +17,8 @@ import {
   const genreIdsString = document.getElementById('js-watched').getAttribute('data-genre_ids');
   const genreIds = genreIdsString ? genreIdsString.split(' ').map(id => parseInt(id)) : [12];
   const releaseDate = document.getElementById('js-watched').getAttribute('data-release_date');
-    const name = document.getElementById('js-watched').getAttribute('name');
-    const title = document.getElementById('js-watched').getAttribute('title');
+    const name = button.dataset.name;
+    const title = button.dataset.title;
   // const watchedMovies = getStorage(refs.WATCHED);
   if (button.classList.contains('add-watched')) {
   const filmInfo = {

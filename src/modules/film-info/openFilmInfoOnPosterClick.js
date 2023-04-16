@@ -18,8 +18,10 @@ export function openFilmInfoOnPosterClick(evt) {
     return;
   }
 
-  const { backdropRef, filmInfoCloseBtnRef, watchedBtnRef, queueBtnRef } = refs;
-  let filmId;
+
+const { backdropRef, filmInfoCloseBtnRef, watchedBtnRef, queueBtnRef } = refs;
+// let filmId;
+
 
   fetchApi(
     apiRefs.MOVIE_DETAILS,
