@@ -1,7 +1,6 @@
 import { refs } from '../refs';
 import { Notify } from 'notiflix';
 import fetchApi, { apiRefs } from '../api-service';
-import { apiRefs } from '../api-service';
 import renderMoviesList from '../html-render';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.min.css';
