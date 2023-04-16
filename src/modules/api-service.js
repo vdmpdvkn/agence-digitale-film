@@ -16,10 +16,15 @@ export const apiRefs = {
 // це перший рядок функції
 // export default async function fetchApi({param = apiRefs.TRENDING, id = 0, page = 1, query = ''}) {
 
-export default async function fetchApi(param, id = 0, page = 1, query = '') {
+export default async function fetchApi({
+  param = apiRefs.TRENDING,
+  id = 0,
+  page = 1,
+  query = '',
+}) {
   const endpoints = {
-    trending: `/trending/all/day?api_key=${API_KEY}`,
-    search: `/search/movie?api_key=${API_KEY}&query=${query}`,
+    trending: `/trending/all/day?api_key=${API_KEY}&page=${page}`,
+    search: `/search/movie?api_key=${API_KEY}&query=${query}&page=${page}`,
     movieDetails: `/movie/${id}?api_key=${API_KEY}`,
     movieVideo: `/movie/${id}/videos?api_key=${API_KEY}`,
   };

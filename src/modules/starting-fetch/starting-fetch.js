@@ -3,7 +3,7 @@ import { apiRefs } from '../api-service';
 import renderMoviesList from '../html-render';
 
 const startingFetch = async () => {
-  const response = await fetchApi(apiRefs.TRENDING);
+  const response = await fetchApi({ page: 1 });
 
   return response.results;
 };

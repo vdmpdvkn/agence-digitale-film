@@ -20,13 +20,14 @@ export function openFilmInfoOnPosterClick(evt) {
 
   const { backdropRef, filmInfoCloseBtnRef, watchedBtnRef, queueBtnRef } = refs;
 
-  fetchApi(
-    apiRefs.MOVIE_DETAILS,
-    Number(
+  fetchApi({
+    param: apiRefs.MOVIE_DETAILS,
+    id: Number(
       evt.target.dataset.id ??
-        evt.target.parentNode.dataset.id ??
-        evt.target.parentNode.parentNode.dataset.id
+      evt.target.parentNode.dataset.id ??
+      evt.target.parentNode.parentNode.dataset.id
     )
+  }
   )
     .then(data => {
       handleFilmInfoData(data, watchedBtnRef, queueBtnRef);
