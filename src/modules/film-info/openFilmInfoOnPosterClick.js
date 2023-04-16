@@ -9,6 +9,7 @@ import {
 } from './closeFilmInfoModal';
 import { handleFilmInfoData } from './handelFilmInfoData';
 import { playVideo } from '../player/playVideo';
+import { Notify } from 'notiflix';
 
 export function openFilmInfoOnPosterClick(evt) {
   if (
@@ -34,18 +35,19 @@ export function openFilmInfoOnPosterClick(evt) {
         evt.target.parentNode.dataset.id ??
         evt.target.parentNode.parentNode.dataset.id
     ),
-  })
-    .then(data => {
-      handleFilmInfoData(data, watchedBtnRef, queueBtnRef);
-      renderFilmInfo(data);
-    })
-    .then(() => {
-      backdropRef.classList.remove('is-hidden');
-    });
+  }).then(data => {
+    if (data.status_code === 34) {
+      Notify.failure('No info');
+      return;
+    }
 
-  document.body.style.overflow = 'hidden';
-  document.addEventListener('click', closeFilmInfoOnEsc);
-  backdropRef.addEventListener('click', closeFilmInfoOnBackdropClick);
-  filmInfoCloseBtnRef.addEventListener('click', closeFilmInfoOnCloseBtnClick);
-  filmWatchTrailerBtnRef.addEventListener('click', playVideo);
+    handleFilmInfoData(data, watchedBtnRef, queueBtnRef);
+    renderFilmInfo(data);
+    backdropRef.classList.remove('is-hidden');
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('click', closeFilmInfoOnEsc);
+    backdropRef.addEventListener('click', closeFilmInfoOnBackdropClick);
+    filmInfoCloseBtnRef.addEventListener('click', closeFilmInfoOnCloseBtnClick);
+    filmWatchTrailerBtnRef.addEventListener('click', playVideo);
+  });
 }
