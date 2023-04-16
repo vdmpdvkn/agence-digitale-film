@@ -6,21 +6,21 @@
 // entry params:
 
 // section - refs.QUEUE or refs.WATCHED section to render. as refs const to avoid mistakes!
-//  
+//
 
 // filmInfo - object with film information needs to save for ex.:
 // {
 //   "id": 594767,
-//   "original_title": "Shazam! Fury of the Gods",  
-//       OR "title": 'Shazam! Fury of the Gods', 
+//   "original_title": "Shazam! Fury of the Gods",
+//       OR "title": 'Shazam! Fury of the Gods',
 //       MAYBE ????
 //   "poster_path": "/A3ZbZsmsvNGdprRi2lKgGEeVLEH.jpg",
 //   "genre_ids": [28, 35, 14],
 //   "release_date": "2023-03-15",
 // }
 
-import { refs } from "../refs";
-import { Notify } from "notiflix";
+import { refs } from '../refs';
+import { Notify } from 'notiflix';
 
 export const getStorage = section => {
   const dataArr = [];
@@ -34,8 +34,8 @@ export const getStorage = section => {
 };
 
 export const getItemFromStorage = (section, id) => {
-  return getStorage(section).find((film) => film.id === id); // return element or undefined if didnt find
-}
+  return getStorage(section).find(film => film.id === id); // return element or undefined if didnt find
+};
 
 export const setStorage = (section, filmInfo) => {
   const dataArr = getStorage(section);
@@ -47,7 +47,10 @@ export const setStorage = (section, filmInfo) => {
   Notify.info(`You got it`);
   localStorage.setItem(section, JSON.stringify(dataArr));
   // del from other section code here
-  delFromStorage(section === refs.WATCHED ? refs.QUEUE : refs.WATCHED, filmInfo.id);
+  delFromStorage(
+    section === refs.WATCHED ? refs.QUEUE : refs.WATCHED,
+    filmInfo.id
+  );
 };
 
 export const delFromStorage = (section, id) => {
@@ -58,7 +61,6 @@ export const delFromStorage = (section, id) => {
   const filtered = dataArr.filter(film => film.id !== id);
   localStorage.setItem(section, JSON.stringify(filtered));
   Notify.info(`You delete it`);
-
 };
 
 export const clearStorage = section => {
