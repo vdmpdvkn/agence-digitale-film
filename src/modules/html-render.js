@@ -2,6 +2,7 @@ import { globalGenres } from './starting-fetch/globalGenres';
 import { IMAGE_URL } from './api-service';
 import { refs } from './refs';
 const imageSize = 'w500';
+import samplePlaceholder from '../images/sample_placeholder.jpg';
 
 export default function renderMoviesList(moviesArr) {
   const markup = moviesArr
@@ -20,7 +21,10 @@ export default function renderMoviesList(moviesArr) {
         : getMovieYear(first_air_date);
       let movieName = title ? title : name;
       const movieGenres = getMovieGenres(genre_ids, globalGenres);
-      const fullImageUrl = `${IMAGE_URL}/${imageSize}${poster_path}`;
+      let fullImageUrl = poster_path
+        ? `${IMAGE_URL}/${imageSize}${poster_path}`
+        : samplePlaceholder;
+      // const fullImageUrl = `${IMAGE_URL}/${imageSize}${poster_path}`;
       return `<li class="movie" data-id=${id}>
   <img src="${fullImageUrl}" alt="${movieName}"/>
   <p class="movie__title">${movieName}</p>
