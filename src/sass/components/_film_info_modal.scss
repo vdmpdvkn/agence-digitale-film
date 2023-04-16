@@ -15,7 +15,6 @@
   min-height: 200px;
   width: 280px;
 
-
   @media screen and (max-width: 767px) {
     top: 450px;
     left: 50%;
@@ -172,14 +171,6 @@
   gap: 5px;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
-
-  @media screen and (min-width: $tablet) {
-    margin-right: 28px;
-  }
-  @media screen and (min-width: $desktop) {
-    margin-right: 92px;
-  }
 
   &__button {
     font-size: 11px;
