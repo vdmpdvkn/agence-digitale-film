@@ -24,6 +24,8 @@ export const refs = {
   watchedBtnRef: document.getElementById('js-watched'),
   queueBtnRef: document.getElementById('js-queue'),
   alertMessage: document.querySelector('.header-form--search'),
+  errorSearchRef: document.querySelector('.header-form__input'),
+
   WATCHED: 'watched',
   QUEUE: 'queue',
 };

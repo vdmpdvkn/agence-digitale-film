@@ -1,17 +1,17 @@
 import { refs } from '../refs';
-import { Notify } from 'notiflix';
 import fetchApi from '../api-service';
 import { apiRefs } from '../api-service';
 import renderMoviesList from '../html-render';
 
-
-// ref.alertMessage = document.querySelector('.header-form--search'),
 refs.formRef.addEventListener('submit', fetchFilmOfSearch);
 
+export function errorSearch() {
+  refs.alertMessage.style.display = 'none';
+}
+ 
 export async function fetchFilmOfSearch(e) {
   e.preventDefault();
   const searchQuery = e.currentTarget.elements.film.value.trim();
-  e.currentTarget.reset(); 
 
   const data = await fetchApi({
     param: apiRefs.SEARCH,
@@ -19,24 +19,27 @@ export async function fetchFilmOfSearch(e) {
     query: searchQuery,
   });
   const dataEl = data.total_results;
-  console.log(dataEl);
-  console.log(data);
-
+  // console.log(dataEl);
+  // console.log(data);
 
 if (searchQuery === '') {
-  refs.alertMessage.style.display = 'none';
-  Notify.warning('Searching starts after providing data to search!');
-  return;
+    refs.alertMessage.textContent =
+      'Searching starts after providing data to search!';
+    refs.alertMessage.style.display = 'flex';
+    return;
 } else if (dataEl === 0) {
-  // refs.alertMessage.classList.add('visually-hidden');
-  refs.alertMessage.style.display = 'flex';
-  Notify.warning('Search result not successful. Enter the correct movie name!');
-  return;
-
+    refs.alertMessage.textContent =
+      'Search result not successful. Enter the correct movie name!';
+    refs.alertMessage.style.display = 'flex';
+    return;
 } else {
-  refs.alertMessage.style.display = 'none';
-  Notify.success(` We found ${data.total_results} films.`);
+    refs.alertMessage.textContent =
+      'Successful!';
+    refs.alertMessage.style.display = 'flex';
+
 }
+refs.errorSearchRef.addEventListener('input', (errorSearch));
+
 renderMoviesList(data.results);
 }
 
@@ -60,4 +63,14 @@ renderMoviesList(data.results);
 
 //   renderMoviesList(data.results);
 
+// }
+
+
+
+
+// export function errorSearch() {
+//   refs.alertMessage.style.display = 'none';
+//   setTimeout(() => {
+//   refs.alertMessage.style.display = 'none';
+//   }, 2000);
 // }
