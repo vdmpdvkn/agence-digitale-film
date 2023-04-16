@@ -31,7 +31,8 @@ export default function renderMoviesList(moviesArr) {
         : samplePlaceholder;
       // const fullImageUrl = `${IMAGE_URL}/${imageSize}${poster_path}`;
       return `<li class="movie" data-id=${id}>
-  <img src="${fullImageUrl}" alt="${movieName}"/>
+  <div class = "movie-image__wrapper">
+  <img src="${fullImageUrl}" alt="${movieName}"/></div>
   <p class="movie__title">${movieName}</p>
   <div class="movie__position">
    <p class="movie__genres">${movieGenres}</p>

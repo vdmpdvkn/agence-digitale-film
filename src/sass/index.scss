@@ -2,10 +2,11 @@
 @import './utils/variables';
 @import './base/reset';
 @import './utils/transitions';
+@import './base/backdrop';
 @import './base/container';
 @import './components/header';
 @import './components/container';
 
-@import './base/backdrop';
 @import './components/film_info_modal';
 @import './components/footer';
+@import './components/player';

@@ -1,0 +1,139 @@
+.modal-team {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #ffffff;
+  box-shadow: 5px 5px 4px 1px rgba(0, 0, 0, 0.3);
+  width: 280px;
+  height: 85vh;
+  overflow-y: scroll;
+  padding: 20px;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    height: 552px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 806px;
+    height: 558px;
+  }
+}
+
+.modal-team__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-team__close:hover,
+.modal-team__close:focus {
+  fill: #b92f2c;
+}
+
+.modal-team__title {
+  margin-top: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 12px;
+  color: #000000;
+  text-shadow: 2px 2px 3px rgba(36, 33, 33, 0.5);
+
+  @media screen and (min-width: 768px) {
+    font-size: 25px;
+    line-height: 16px;
+  }
+}
+
+/* Team cards */
+.modal-team__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    gap: 15px;
+  }
+  @media screen and (min-width: 1280px) {
+    gap: 20px;
+  }
+}
+
+.modal-team__item {
+  max-width: 115px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: solid 5px rgb(214, 212, 212);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+
+  @media screen and (min-width: 768px) {
+    min-width: 140px;
+  }
+  @media screen and (min-width: 1280px) {
+    min-width: 160px;
+  }
+}
+
+.modal-team__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-team__thumb {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 115px;
+  flex-grow: 1;
+  padding: 7px;
+  background-color: #fff;
+}
+
+.modal-team__name {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.modal-team__role {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: rgb(0, 0, 0);
+  text-shadow: 1px 1px 2px rgba(16, 16, 16, 0.5);
+}
+
+.modal-team__link {
+  color: blue;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.modal-team__link:hover,
+.modal-team__link:focus {
+  transform: scale(1.2);
+}
+
+.name-correction {
+  padding-right: 15px;
+  padding-left: 15px;
+}

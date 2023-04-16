@@ -1,6 +1,6 @@
 .film-info {
   position: absolute;
-
+  border-radius: 5px;
   padding-top: 48px;
   padding-right: 20px;
   padding-bottom: 40px;
@@ -147,6 +147,16 @@
   display: flex;
   gap: 5px;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  transition: 250ms $time-function;
+  @media screen and (min-width: $tablet) {
+    margin-right: 28px;
+  }
+  @media screen and (min-width: $desktop) {
+    margin-right: 92px;
+  }
+
   &__button {
     font-size: 11px;
     line-height: calc(14 / 11);
@@ -166,6 +176,7 @@
       border: 2px solid transparent;
       background-color: getcolor(accent-color);
       color: getcolor(white-text-color);
+      justify-self: center;
       &:hover,
       &:focus {
         border-color: getcolor(black-color);
@@ -185,6 +196,10 @@
         background-color: transparent;
         box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
       }
+    }
+    &--center {
+      margin-top: 10px;
+      border: 2px solid getcolor(accent-color);
     }
   }
 }

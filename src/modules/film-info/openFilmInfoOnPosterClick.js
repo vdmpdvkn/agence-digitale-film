@@ -7,30 +7,37 @@ import {
   closeFilmInfoOnEsc,
   closeFilmInfoOnCloseBtnClick,
 } from './closeFilmInfoModal';
-import {
-  handleQueueClick,
-  handleWatchedClick,
-} from '../localStorageWatchQueue/localStorageWatchedQueue';
+import { handleFilmInfoData } from './handelFilmInfoData';
 
 export function openFilmInfoOnPosterClick(evt) {
-  if (evt.target.nodeName !== 'LI' && evt.target.parentNode.nodeName !== 'LI') {
+  if (
+    evt.target.nodeName !== 'LI' &&
+    evt.target.parentNode.nodeName !== 'LI' &&
+    evt.target.parentNode.parentNode.nodeName !== 'LI'
+  ) {
     return;
   }
 
   const { backdropRef, filmInfoCloseBtnRef, watchedBtnRef, queueBtnRef } = refs;
+
   fetchApi(
     apiRefs.MOVIE_DETAILS,
-    Number(evt.target.dataset.id ?? evt.target.parentNode.dataset.id)
+    Number(
+      evt.target.dataset.id ??
+        evt.target.parentNode.dataset.id ??
+        evt.target.parentNode.parentNode.dataset.id
+    )
   )
     .then(data => {
+      handleFilmInfoData(data, watchedBtnRef, queueBtnRef);
       renderFilmInfo(data);
     })
     .then(() => {
-      refs.backdropRef.classList.remove('is-hidden');
+      backdropRef.classList.remove('is-hidden');
     });
-  document.addEventListener('keydown', closeFilmInfoOnEsc);
+
+  document.body.style.overflow = 'hidden';
+  document.addEventListener('click', closeFilmInfoOnEsc);
   backdropRef.addEventListener('click', closeFilmInfoOnBackdropClick);
   filmInfoCloseBtnRef.addEventListener('click', closeFilmInfoOnCloseBtnClick);
-  watchedBtnRef.addEventListener('click', handleWatchedClick);
-  queueBtnRef.addEventListener('click', handleQueueClick);
 }

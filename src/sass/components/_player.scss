@@ -1,0 +1,17 @@
+.plyr__video-embed {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  position: fixed;
+  margin: 20px auto;
+  min-width: $phone;
+  z-index: 3;
+
+  @media screen and (min-width: $tablet) {
+    min-width: $tablet;
+  }
+
+  @media screen and (min-width: $desktop) {
+    min-width: $desktop;
+  }
+}

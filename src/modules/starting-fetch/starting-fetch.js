@@ -19,8 +19,9 @@ const getStartingArray = async () => {
     console.error('Error:', error);
   }
 };
-export const startingRender = async () => { 
+export const startingRender = async () => {
   await getStartingArray().then(() => {
-  renderMoviesList(startingArr);
-});
-}
+    renderMoviesList(startingArr);
+    startingArr.length = 0;
+  });
+};

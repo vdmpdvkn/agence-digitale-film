@@ -4,7 +4,7 @@
   margin: 20 auto;
   width: 280px;
   height: 460px;
-  @media screen and (max-width: $phone) {
+  @media screen and (max-width: 319px) {
     width: 100%;
   }
 
@@ -92,9 +92,9 @@
   }
 }
 
-.header-nav--position {
-  position: relative;
-}
+// .header-nav--position {
+//   position: relative;
+// }
 
 .header-form {
   position: absolute;
@@ -115,14 +115,14 @@
     top: 37px;
     left: 115px;
 
-    width: 168px;
+    width: 165px;
     height: 42px;
   }
 }
 
 .header-form__input {
-  width: 236px;
-  height: 32px;
+  width: 252px;
+  height: 34px;
   background-color: #ffffff;
   border-radius: 100px;
   border: none;
@@ -131,16 +131,16 @@
   padding-left: 14px;
 
   @media screen and (min-width: 768px) {
-    width: 147px;
-    height: 36px;
+    width: 165px;
+    height: 38px;
     padding-left: 16px;
     font-size: 14px;
     line-height: 1.17;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 168px;
-    height: 40px;
+    width: 165px;
+    height: 42px;
   }
 }
 
@@ -156,7 +156,8 @@
   }
 
   @media screen and (min-width: 1280px) {
-    padding-left: 227px;
+    padding-top: 16px;
+    padding-left: 210px;
   }
 }
 
@@ -237,9 +238,14 @@
 
   @media screen and (min-width: 768px) {
     top: 18px;
-    right: 0px;
+    right: -15px;
     width: 16px;
     height: 16px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    right: 0;
+    top: 20px;
   }
 }
 
@@ -360,7 +366,7 @@
   }
 
   @media screen and (min-width: 1280px) {
-    top: 35px;
+    top: 37px;
     left: 1063px;
   }
 }
