@@ -32,6 +32,8 @@ export function openFilmInfoOnPosterClick(evt) {
     .then(data => {
       handleFilmInfoData(data, watchedBtnRef, queueBtnRef);
       renderFilmInfo(data);
+      setBackdropStyle(data);
+      console.log('data = ', data);
     })
     .then(() => {
       backdropRef.classList.remove('is-hidden');
@@ -42,3 +44,21 @@ export function openFilmInfoOnPosterClick(evt) {
   backdropRef.addEventListener('click', closeFilmInfoOnBackdropClick);
   filmInfoCloseBtnRef.addEventListener('click', closeFilmInfoOnCloseBtnClick);
 }
+
+
+function setBackdropStyle(data) {
+  const imageLink = 'https://image.tmdb.org/t/p/original/';
+  const poster_path = data.poster_path;
+  const bgImageForBcdrop = poster_path ? `${imageLink}${poster_path}` : samplePlaceholder;
+  const elementWithBgImage = document.querySelector('.backdrop');
+
+  // Установить фоновое изображение для элемента
+  elementWithBgImage.style.backgroundImage = `url(${bgImageForBcdrop})`;
+
+  // Установить другие стили фона, если нужно
+  elementWithBgImage.style.backgroundSize = 'cover';
+  elementWithBgImage.style.backgroundPosition = 'center';
+  elementWithBgImage.style.backgroundRepeat = 'no-repeat';
+}
+
+      
