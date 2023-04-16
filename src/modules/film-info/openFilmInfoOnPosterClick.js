@@ -67,3 +67,4 @@ document.addEventListener('keydown', closeFilmInfoOnEsc);
 backdropRef.addEventListener('click', closeFilmInfoOnBackdropClick);
 filmInfoCloseBtnRef.addEventListener('click', closeFilmInfoOnCloseBtnClick);
 }
+
