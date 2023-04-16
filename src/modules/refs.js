@@ -23,6 +23,7 @@ export const refs = {
   paginationRef: document.querySelector('#pagination'),
   watchedBtnRef: document.getElementById('js-watched'),
   queueBtnRef: document.getElementById('js-queue'),
+  alertMessage: document.querySelector('.header-form--search'),
   WATCHED: 'watched',
   QUEUE: 'queue',
 };
