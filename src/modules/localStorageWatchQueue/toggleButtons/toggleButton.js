@@ -1,34 +1,35 @@
 import { refs } from '../../refs';
 const { watchedBtnRef, queueBtnRef } = refs;
-
+import { getStorage } from '../../localStorage/localStorage';
 
 export function toggleWatchedBtn() {
-  if (watchedBtnRef.classList.contains('add-watched')) {
-    watchedBtnRef.classList.remove('add-watched');
-    watchedBtnRef.classList.add('remove-watched');
-    watchedBtnRef.textContent = 'Remove from Watched';
-    watchedBtnRef.disabled = false;
-    queueBtnRef.disabled = true;
+  const watchedBtn = watchedBtnRef;
+  const queueBtn = queueBtnRef;
+  const trailerId = watchedBtn.dataset.id;
+  const isInWatched = getStorage(refs.WATCHED).some(
+    movie => movie.id === trailerId
+  );
+  const isInQueue = getStorage(refs.QUEUE).some(
+    movie => movie.id === trailerId
+  );
+
+  if (isInWatched) {
+    watchedBtn.textContent = 'Remove from watched';
+    watchedBtn.classList.remove('add-watched');
+    watchedBtn.classList.add('remove-watched');
   } else {
-    watchedBtnRef.classList.remove('remove-watched');
-    watchedBtnRef.classList.add('add-watched');
-    watchedBtnRef.textContent = 'Add to Watched';
-    watchedBtnRef.disabled = false;
-    queueBtnRef.disabled = false;
+    watchedBtn.textContent = 'Add to watched';
+    watchedBtn.classList.remove('remove-watched');
+    watchedBtn.classList.add('add-watched');
   }
-}
-export function toggleQueueBtn() {
-  if (queueBtnRef.classList.contains('add-queue')) {
-    queueBtnRef.classList.remove('add-queue');
-    queueBtnRef.classList.add('remove-queue');
-    queueBtnRef.textContent = 'Remove from Queue';
-    queueBtnRef.disabled = false;
-    watchedBtnRef.disabled = true;
+
+  if (isInQueue) {
+    queueBtn.textContent = 'Remove from queue';
+    queueBtn.classList.remove('add-queue');
+    queueBtn.classList.add('remove-queue');
   } else {
-    queueBtnRef.classList.remove('remove-queue');
-    queueBtnRef.classList.add('add-queue');
-    queueBtnRef.textContent = 'Add to Queue';
-    queueBtnRef.disabled = false;
-    watchedBtnRef.disabled = false;
+    queueBtn.textContent = 'Add to queue';
+    queueBtn.classList.remove('remove-queue');
+    queueBtn.classList.add('add-queue');
   }
 }
