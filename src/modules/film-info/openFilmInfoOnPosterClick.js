@@ -8,6 +8,7 @@ import {
   closeFilmInfoOnCloseBtnClick,
 } from './closeFilmInfoModal';
 import { handleFilmInfoData } from './handelFilmInfoData';
+import { playVideo } from '../player/playVideo';
 
 export function openFilmInfoOnPosterClick(evt) {
   if (
@@ -18,17 +19,22 @@ export function openFilmInfoOnPosterClick(evt) {
     return;
   }
 
-  const { backdropRef, filmInfoCloseBtnRef, watchedBtnRef, queueBtnRef } = refs;
+  const {
+    backdropRef,
+    filmInfoCloseBtnRef,
+    watchedBtnRef,
+    queueBtnRef,
+    filmWatchTrailerBtnRef,
+  } = refs;
 
   fetchApi({
     param: apiRefs.MOVIE_DETAILS,
     id: Number(
       evt.target.dataset.id ??
-      evt.target.parentNode.dataset.id ??
-      evt.target.parentNode.parentNode.dataset.id
-    )
-  }
-  )
+        evt.target.parentNode.dataset.id ??
+        evt.target.parentNode.parentNode.dataset.id
+    ),
+  })
     .then(data => {
       handleFilmInfoData(data, watchedBtnRef, queueBtnRef);
       renderFilmInfo(data);
@@ -41,4 +47,5 @@ export function openFilmInfoOnPosterClick(evt) {
   document.addEventListener('click', closeFilmInfoOnEsc);
   backdropRef.addEventListener('click', closeFilmInfoOnBackdropClick);
   filmInfoCloseBtnRef.addEventListener('click', closeFilmInfoOnCloseBtnClick);
+  filmWatchTrailerBtnRef.addEventListener('click', playVideo);
 }

@@ -20,7 +20,7 @@ export async function playVideo() {
     allow="autoplay"
   ></iframe>`;
   playerEl.innerHTML = htmlIframe;
-  document.addEventListener('keydown', closePlayerOnEsc);
+  player.addEventListener('keydown', closePlayerOnEsc);
   try {
     window.player = player;
   } catch (e) {
@@ -32,7 +32,7 @@ function closePlayerOnEsc(e) {
     return;
   }
   player.destroy();
-  // console.log(e.target);
+  console.log(e.currentTarget);
   modalPlayer.classList.add('is-hidden');
   playerEl.innerHTML = '';
 }

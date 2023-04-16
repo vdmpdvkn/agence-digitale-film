@@ -17,7 +17,6 @@
   @media screen and (max-width: $tablet) {
     top: 20px;
     left: 50%;
-    transform: translateX(-50%) scale(0.8);
   }
 
   @media screen and (min-width: $tablet) {
@@ -29,7 +28,6 @@
     min-height: 560px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.8);
   }
 
   @media screen and (min-width: $desktop) {
@@ -62,7 +60,9 @@
     height: 348px;
     background-color: grey;
     transition: 250ms $time-function;
-
+    &--wrapper {
+      position: relative;
+    }
     @media screen and (min-width: $tablet) {
       min-width: 264px;
       height: 350px;
@@ -149,7 +149,7 @@
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
-  transition: 250ms $time-function;
+
   @media screen and (min-width: $tablet) {
     margin-right: 28px;
   }
@@ -200,6 +200,7 @@
     &--center {
       margin-top: 10px;
       border: 2px solid getcolor(accent-color);
+      position: absolute;
     }
   }
 }
