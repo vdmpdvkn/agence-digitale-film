@@ -19,7 +19,7 @@ return;
 }
 
 const { backdropRef, filmInfoCloseBtnRef, watchedBtnRef, queueBtnRef } = refs;
-let filmId;
+// let filmId;
 
 fetchApi(
 apiRefs.MOVIE_DETAILS,
