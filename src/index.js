@@ -26,4 +26,4 @@ refs.buttonRefWatched.addEventListener('click', onClickButtonWatched);
 refs.buttonRefQueue.addEventListener('click', onClickButtonQueue);
 
 startingRender();
-// import './modules/modal-team/modalTeamOpenClose';
+import './modules/modal-team/modalTeamOpenClose';
