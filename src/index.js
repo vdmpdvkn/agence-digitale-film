@@ -9,6 +9,7 @@ import { openFilmInfoOnPosterClick } from './modules/film-info/openFilmInfoOnPos
 // import renderMoviesList from './modules/html-render';
 import { startingRender } from './modules/starting-fetch/starting-fetch';
 import { fetchFilmOfSearch } from './modules/search/fetch';
+
 import { pagination } from './modules/pagination/pagination';
 // getStartingArray().then(() => {
 //   renderMoviesList(startingArr);
@@ -26,4 +27,4 @@ refs.buttonRefWatched.addEventListener('click', onClickButtonWatched);
 refs.buttonRefQueue.addEventListener('click', onClickButtonQueue);
 
 startingRender();
-// import './modules/modal-team/modalTeamOpenClose';
+import './modules/modal-team/modalTeamOpenClose';

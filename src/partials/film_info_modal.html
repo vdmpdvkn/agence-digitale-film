@@ -6,14 +6,21 @@
       </svg>
     </button>
     <div class="film-info__wrapper">
-      <img
-        src="#"
-        alt="placeholder"
-        id="film-modal-image"
-        class="film-info__image"
-        width="240"
-        height="357"
-      />
+      <div class="film-info__image-wrapper">
+        <img
+          src="#"
+          alt="placeholder"
+          id="film-modal-image"
+          class="film-info__image"
+          width="240"
+          height="357"
+        />
+        <button type="button" class="trailer-btn" id="js-trailer">
+          <svg width="30" height="30">
+            <use href="./images/header/icons.svg#icon-play3"></use>
+          </svg>
+        </button>
+      </div>
 
       <div class="film-info__text-wrapper">
         <h2 class="film-info__name" id="film-name"></h2>
@@ -59,15 +66,6 @@
                 id="js-queue"
               >
                 Add to Queue
-              </button>
-            </li>
-            <li class="buttons-list_item">
-              <button
-                type="button"
-                class="buttons-list__button buttons-list__button--center"
-                id="js-trailer"
-              >
-                Watch Trailer
               </button>
             </li>
           </ul>

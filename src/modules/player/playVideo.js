@@ -10,29 +10,33 @@ export async function playVideo() {
   modalPlayer.classList.remove('is-hidden');
   playerEl.style.display = 'block';
   playerEl.innerHTML = '';
-  const data = await fetchApi({ param: apiRefs.MOVIE_VIDEO, id: id });
-  const keyVideo = await data.results[0].key;
-  const player = new Plyr('#player', {});
-  const htmlIframe = `<iframe
+  try {
+    const data = await fetchApi({ param: apiRefs.MOVIE_VIDEO, id: id });
+    const keyVideo = await data.results[0].key;
+    const player = new Plyr('#player', {});
+    const htmlIframe = `<iframe
     src="https://www.youtube.com/embed/${keyVideo}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
     allowfullscreen
     allowtransparency
     allow="autoplay"
   ></iframe>`;
-  playerEl.innerHTML = htmlIframe;
-  document.addEventListener('keydown', closePlayerOnEsc);
-  try {
+    playerEl.innerHTML = htmlIframe;
+    document.addEventListener('click', closePlayerOnEsc);
+
     window.player = player;
+    player.on(error, () => {
+      console.log('error= ' + error);
+    });
   } catch (e) {
-    console.log(e);
+    return;
   }
 }
 function closePlayerOnEsc(e) {
-  if (e.code !== 'Escape') {
+  if (!e.target.classList.contains('backdrop')) {
     return;
   }
   player.destroy();
-  // console.log(e.target);
   modalPlayer.classList.add('is-hidden');
   playerEl.innerHTML = '';
 }
+// 1

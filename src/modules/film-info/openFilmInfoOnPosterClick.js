@@ -51,8 +51,6 @@ function setBackdropStyle(data) {
   const poster_path = data.poster_path;
   const bgImageForBcdrop = poster_path ? `${imageLink}${poster_path}` : samplePlaceholder;
   const elementWithBgImage = document.querySelector('.backdrop');
-
-  // Установить фоновое изображение для элемента
   elementWithBgImage.style.backgroundImage = `url(${bgImageForBcdrop})`;
 
   // Установить другие стили фона, если нужно
