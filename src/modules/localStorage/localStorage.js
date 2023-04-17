@@ -22,15 +22,31 @@
 import { refs } from '../refs';
 import { Notify } from 'notiflix';
 
-export const getStorage = section => {
+export const getStorage = (
+  section,
+  pagination = { page: 1, perPage: Infinity }
+) => {
   const dataArr = [];
   const data = JSON.parse(localStorage.getItem(section));
   if (!data) {
     // Notify.info(`You have NO films in ${section}`);
     return dataArr;
   }
-  dataArr.push(...data);
+  dataArr.push(
+    ...data.slice(
+      (pagination.page - 1) * pagination.perPage,
+      pagination.page * pagination.perPage
+    )
+  );
   return dataArr; // return array of films info obj similar to entry arrays of obj
+};
+
+export const getStorageLength = section => {
+  const data = JSON.parse(localStorage.getItem(section));
+  if (!data) {
+    return 0;
+  }
+  return data.length;
 };
 
 export const getItemFromStorage = (section, id) => {
