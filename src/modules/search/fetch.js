@@ -3,7 +3,9 @@ import fetchApi from '../api-service';
 import { apiRefs } from '../api-service';
 import renderMoviesList from '../html-render';
 import Pagination from 'tui-pagination';
+
 import { paginationFunc } from '../pagination/pagination';
+
 
 refs.formRef.addEventListener('submit', fetchFilmOfSearch);
 refs.errorSearchRef.addEventListener('input', errorSearch);
@@ -24,8 +26,6 @@ export async function fetchFilmOfSearch(e) {
     query: searchQuery,
   });
   const dataEl = data.total_results;
-  // console.log(dataEl);
-  // console.log(data);
 
   if (searchQuery === '') {
     refs.alertMessage.textContent =
