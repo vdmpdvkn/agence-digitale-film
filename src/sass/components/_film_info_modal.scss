@@ -59,16 +59,14 @@
   .trailer-btn {
     width: 45px;
     height: 45px;
-    padding-left: 2px;
-    background-color: getcolor(accent-color);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    background-color: transparent;
+    border-color: transparent;
+
     position: absolute;
     top: 10px;
     right: 10px;
-    opacity: 0.5;
+    opacity: 0.7;
     &:hover {
       transform: scale(1.05);
     }
@@ -171,47 +169,41 @@
   display: flex;
   gap: 5px;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  @media screen and (min-width: 767px) {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
 
   &__button {
     font-size: 11px;
     line-height: calc(14 / 11);
     border-radius: 20px;
-    padding: 10px 14px;
+
+    width: 157px;
+    height: 38px;
     text-transform: uppercase;
     cursor: pointer;
+    border: 2px solid getcolor(accent-color);
+    background-color: getcolor(accent-color);
+    color: getcolor(white-text-color);
 
-    @media screen and (min-widht: $tablet) {
-      padding: 12px 18px;
-    }
     @media screen and (min-width: $desktop) {
       font-size: 12px;
-      padding: 14px 32px;
-    }
-    &--red {
-      border: 2px solid transparent;
-      background-color: getcolor(accent-color);
-      color: getcolor(white-text-color);
-      justify-self: center;
-      &:hover,
-      &:focus {
-        border-color: getcolor(black-color);
-        color: getcolor(black-text-color);
-        background-color: transparent;
-        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-      }
+
+      width: 185px;
+      height: 42px;
     }
     &--transparent {
-      background-color: transparent;
-      color: getcolor(red-text-color);
       border: 2px solid getcolor(black-color);
-      &:hover,
-      &:focus {
-        border-color: getcolor(accent-color);
-        color: getcolor(black-text-color);
-        background-color: transparent;
-        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-      }
+      background-color: transparent;
+      color: getcolor(accent-color);
+    }
+    &--black {
+      border-color: getcolor(black-color);
+      background-color: getcolor(black-color);
+      color: getcolor(white-text-color);
     }
   }
 }

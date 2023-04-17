@@ -7,7 +7,7 @@ import {
   closeFilmInfoOnEsc,
   closeFilmInfoOnCloseBtnClick,
 } from './closeFilmInfoModal';
-import { handleFilmInfoData } from './handelFilmInfoData';
+import { handleFilmInfoData } from './handleFilmInfoData';
 import { playVideo } from '../player/playVideo';
 import { Notify } from 'notiflix';
 

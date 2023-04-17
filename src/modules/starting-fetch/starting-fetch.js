@@ -30,5 +30,6 @@ export const startingRender = async () => {
       { param: apiRefs.TRENDING },
       paginationStart
     );
+    startingArr.length = 0;
   });
 };

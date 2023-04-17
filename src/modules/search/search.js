@@ -4,9 +4,7 @@ import { apiRefs } from '../api-service';
 import renderMoviesList from '../html-render';
 
 import { paginationFunc } from '../pagination/pagination';
-
-refs.formRef.addEventListener('submit', fetchFilmOfSearch);
-refs.errorSearchRef.addEventListener('input', errorSearch);
+import { onClickHomeButton } from '../header/button-home';
 
 export function errorSearch() {
   refs.alertMessage.style.display = 'none';
@@ -14,7 +12,7 @@ export function errorSearch() {
 
 let paginationSearch;
 
-export async function fetchFilmOfSearch(e) {
+export async function fetchFilmOnSearch(e) {
   e.preventDefault();
   const searchQuery = e.currentTarget.elements.film.value.trim();
   onClickHomeButton();

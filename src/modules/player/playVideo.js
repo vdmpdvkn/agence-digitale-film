@@ -12,7 +12,9 @@ export async function playVideo() {
   playerEl.innerHTML = '';
   try {
     const data = await fetchApi({ param: apiRefs.MOVIE_VIDEO, id: id });
-    const keyVideo = await data.results[0].key;
+    const keyVideo = await data.results.find(element => {
+      return element.type === 'Trailer';
+    }).key;
     const player = new Plyr('#player', {});
     const htmlIframe = `<iframe
     src="https://www.youtube.com/embed/${keyVideo}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
@@ -21,7 +23,7 @@ export async function playVideo() {
     allow="autoplay"
   ></iframe>`;
     playerEl.innerHTML = htmlIframe;
-    document.addEventListener('click', closePlayerOnEsc);
+    document.addEventListener('click', closePlayerOnBackdropClick);
 
     window.player = player;
     player.on(error, () => {
@@ -31,12 +33,13 @@ export async function playVideo() {
     return;
   }
 }
-function closePlayerOnEsc(e) {
+function closePlayerOnBackdropClick(e) {
   if (!e.target.classList.contains('backdrop')) {
     return;
   }
   player.destroy();
   modalPlayer.classList.add('is-hidden');
   playerEl.innerHTML = '';
+  document.removeEventListener('click', closePlayerOnBackdropClick);
 }
 // 1

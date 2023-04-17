@@ -1,6 +1,6 @@
 import { refs } from '../refs';
 import { paginationStorage } from '../pagination/pagination';
-
+import { onClickButtonWatched, onClickButtonQueue } from './button-home';
 let paginationMyLibrary;
 
 export function onClickMyLibraryButton() {

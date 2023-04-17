@@ -20,7 +20,6 @@
 // }
 
 import { refs } from '../refs';
-import { Notify } from 'notiflix';
 
 export const getStorage = (
   section,
@@ -29,7 +28,6 @@ export const getStorage = (
   const dataArr = [];
   const data = JSON.parse(localStorage.getItem(section));
   if (!data) {
-    // Notify.info(`You have NO films in ${section}`);
     return dataArr;
   }
   dataArr.push(
@@ -56,11 +54,10 @@ export const getItemFromStorage = (section, id) => {
 export const setStorage = (section, filmInfo) => {
   const dataArr = getStorage(section);
   if (dataArr.find(film => film.id === filmInfo.id)) {
-    Notify.info(`You have this film in ${section} already`);
     return; // if saved already
   }
   dataArr.push(filmInfo);
-  Notify.info(`You got it`);
+
   localStorage.setItem(section, JSON.stringify(dataArr));
   // del from other section code here
   delFromStorage(
@@ -76,7 +73,6 @@ export const delFromStorage = (section, id) => {
   }
   const filtered = dataArr.filter(film => film.id !== id);
   localStorage.setItem(section, JSON.stringify(filtered));
-  Notify.info(`You delete it`);
 };
 
 export const clearStorage = section => {
