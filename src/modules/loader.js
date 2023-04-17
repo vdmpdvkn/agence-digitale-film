@@ -1,17 +1,9 @@
-// import Notiflix from 'notiflix';
-// import axios from 'axios';
-// import {BASE_URL} from './api_key'
-// import { refs } from './refs';
-// import { refs } from './refs';
-
-// async function fetchPhotos(BASE_URL) {
-//   try {
-//     const response = await axios.get(BASE_URL);
-//     return response.data;
-//   } catch (error) {
-//     console.error(error);
-//   }
+// async function loadingFilms(BASE_URL) {
+//   Notiflix.Loading.dots('Loading...');
+//   const response = await fetchFilms(BASE_URL);
+//   Notiflix.Loading.remove();
 // }
+
 
 import { BASE_URL } from './api_key';
 import { refs } from './refs';
