@@ -3,7 +3,6 @@ import fetchApi from '../api-service';
 import { apiRefs } from '../api-service';
 import renderMoviesList from '../html-render';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.min.css';
 
 refs.formRef.addEventListener('submit', fetchFilmOfSearch);
 refs.errorSearchRef.addEventListener('input', errorSearch);
