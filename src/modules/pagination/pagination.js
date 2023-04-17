@@ -3,40 +3,65 @@ import { refs } from '../refs';
 import fetchApi from '../api-service';
 import renderMoviesList from '../html-render';
 import { onClickHomeButton } from '../header/button-home';
+import { getStorage, getStorageLength } from '../localStorage/localStorage';
 
-let pagination;
+// let pagination;
 
-export function paginationFunc (total_results, fetch_refs) {
-    if (pagination) {
-      pagination.reset();
-    }
+export function paginationFunc(total_results, fetch_refs, pagination) {
+  if (pagination) {
+    pagination.reset();
+  }
 
-    // onClickHomeButton();
+  const paginationParams = {
+    totalItems: total_results,
+    itemsPerPage: 20,
+    visiblePages: 5,
+    currentPage: 1,
+    centerAlign: true,
+  };
 
-    const paginationParams = {
-      totalItems: total_results,
-      itemsPerPage: 20,
-      visiblePages: 5,
-      currentPage: 1,
-      centerAlign: true,
-    };
+  pagination = new Pagination(refs.paginationRef, paginationParams);
 
-    pagination = new Pagination(refs.paginationRef, paginationParams);
+  pagination.on('afterMove', eventData => {
+    paginationParams.currentPage = eventData.page;
+    performMovieSearch({ ...fetch_refs, page: paginationParams.currentPage });
+  });
+}
 
-    pagination.on('afterMove', eventData => {
-      paginationParams.currentPage = eventData.page;
-      performMovieSearch({ ...fetch_refs, page: paginationParams.currentPage });
+export function paginationStorage(ref, pagination) {
+  if (pagination) {
+    pagination.reset();
+  }
+  pagination = new Pagination(refs.paginationRef, {
+    totalItems: getStorageLength(ref),
+    itemsPerPage: 5,
+    visiblePages: 5,
+    currentPage: 1,
+    centerAlign: true,
+  });
+
+  pagination.on('afterMove', eventData => {
+    const page = eventData.page;
+
+    const queue = getStorage(ref, {
+      page,
+      perPage: 5,
     });
+    renderMoviesList(queue);
+  });
+
+  const queue = getStorage(ref, { page: 1, perPage: 5 });
+  renderMoviesList(queue);
 }
 
 function performMovieSearch(fetch_refs) {
-    // console.log(fetch_refs);
-    fetchApi(fetch_refs)
-//     {
-//     param: apiRefs.SEARCH,
-//     page: paginationParams.currentPage,
-//     query: searchQuery,
-//   }
+  // console.log(fetch_refs);
+  fetchApi(fetch_refs)
+    //     {
+    //     param: apiRefs.SEARCH,
+    //     page: paginationParams.currentPage,
+    //     query: searchQuery,
+    //   }
     // const searchURL = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=${paginationParams.currentPage}`;
     // fetch(searchURL)
     // .then(response => response.json())
