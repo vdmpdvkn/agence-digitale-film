@@ -10,7 +10,7 @@ import { openFilmInfoOnPosterClick } from './modules/film-info/openFilmInfoOnPos
 import { startingRender } from './modules/starting-fetch/starting-fetch';
 import { fetchFilmOfSearch } from './modules/search/fetch';
 
-import { pagination } from './modules/pagination/pagination';
+// import { pagination } from './modules/pagination/pagination';
 // getStartingArray().then(() => {
 //   renderMoviesList(startingArr);
 // });
