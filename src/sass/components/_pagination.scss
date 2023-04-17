@@ -36,8 +36,8 @@
   margin-left: 0;
   color: #333;
   font-size: 12px;
-  font-weight: normal;
-  line-height: 1;
+  font-weight: 500;
+  line-height: 16px;
   text-decoration: none;
   vertical-align: middle;
   border-radius: 5px;
@@ -65,16 +65,6 @@
 .tui-pagination .tui-first-child.tui-is-selected,
 .tui-pagination strong.tui-first-child {
   margin-left: 0;
-}
-
-.tui-pagination .tui-first-child,
-.tui-pagination .tui-prev-is-ellip {
-  border-left: 1px solid #ddd;
-}
-
-.tui-pagination .tui-last-child,
-.tui-pagination .tui-next-is-ellip {
-  border-right: 1px solid #ddd;
 }
 
 .tui-pagination .tui-first-child.tui-is-selected {
