@@ -2,15 +2,16 @@ import Pagination from 'tui-pagination';
 import { refs } from '../refs';
 import fetchApi from '../api-service';
 import renderMoviesList from '../html-render';
+import { onClickHomeButton } from '../header/button-home';
 
 let pagination;
-
-
 
 export function paginationFunc (total_results, fetch_refs) {
     if (pagination) {
       pagination.reset();
     }
+
+    // onClickHomeButton();
 
     const paginationParams = {
       totalItems: total_results,
