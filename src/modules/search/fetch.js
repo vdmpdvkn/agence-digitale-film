@@ -3,6 +3,7 @@ import fetchApi from '../api-service';
 import { apiRefs } from '../api-service';
 import renderMoviesList from '../html-render';
 import Pagination from 'tui-pagination';
+import { onClickHomeButton } from '../header/button-home';
 
 refs.formRef.addEventListener('submit', fetchFilmOfSearch);
 refs.errorSearchRef.addEventListener('input', errorSearch);
@@ -21,14 +22,14 @@ export async function fetchFilmOfSearch(e) {
     pagination.reset();
   }
 
+  onClickHomeButton();
+
   const data = await fetchApi({
     param: apiRefs.SEARCH,
     page: 1,
     query: searchQuery,
   });
   const dataEl = data.total_results;
-  // console.log(dataEl);
-  // console.log(data);
 
   if (searchQuery === '') {
     refs.alertMessage.textContent =
