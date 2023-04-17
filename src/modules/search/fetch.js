@@ -42,7 +42,8 @@ export async function fetchFilmOfSearch(e) {
     return;
   } else {
     refs.alertMessage.textContent = 'Successful!';
-    refs.alertMessage.style.display = 'flex';
+    refs.alertMessage.style.display = 'block';
+    refs.formRef.reset();
   }
 
   renderMoviesList(data.results);
