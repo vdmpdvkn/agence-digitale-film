@@ -6,7 +6,6 @@ import {
 import { getStorage } from '../localStorage/localStorage';
 
 export function handleFilmInfoData(data, watchedBtnRef, queueBtnRef) {
-  console.log(data.id);
   const filmId = data.id;
   const localStorageDataWatched = getStorage(refs.WATCHED);
   const itemInWatched = localStorageDataWatched

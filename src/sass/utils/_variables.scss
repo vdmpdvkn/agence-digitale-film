@@ -9,6 +9,8 @@ $colors: (
   'white-color': #ffffff,
   'black-color': #000000,
   'modal-backdrop-bg-color': rgb(129, 124, 124, 0.3),
+  'black-theme-text-color': rgba(225, 225, 225, 0.8),
+  'black-theme-accent-color': #ff6b01,
 );
 @function getcolor($key) {
   @return map-get($colors, $key);

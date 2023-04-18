@@ -15,7 +15,6 @@ export function renderFilmInfo(object) {
     id,
     release_date,
   } = object;
-  console.log('object->', object);
 
   const {
     filmNameRef,

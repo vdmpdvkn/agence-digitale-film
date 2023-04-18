@@ -2,10 +2,8 @@ import Pagination from 'tui-pagination';
 import { refs } from '../refs';
 import fetchApi from '../api-service';
 import renderMoviesList from '../html-render';
-import { onClickHomeButton } from '../header/button-home';
-import { getStorage, getStorageLength } from '../localStorage/localStorage';
 
-// let pagination;
+import { getStorage, getStorageLength } from '../localStorage/localStorage';
 
 export function paginationFunc(total_results, fetch_refs, pagination) {
   if (pagination) {
@@ -55,18 +53,8 @@ export function paginationStorage(ref, pagination) {
 }
 
 function performMovieSearch(fetch_refs) {
-  // console.log(fetch_refs);
   fetchApi(fetch_refs)
-    //     {
-    //     param: apiRefs.SEARCH,
-    //     page: paginationParams.currentPage,
-    //     query: searchQuery,
-    //   }
-    // const searchURL = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&page=${paginationParams.currentPage}`;
-    // fetch(searchURL)
-    // .then(response => response.json())
     .then(data => {
-      // Update the UI with the movie search results
       renderMoviesList(data.results);
     })
     .catch(error => {

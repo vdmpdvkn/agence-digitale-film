@@ -2,14 +2,17 @@
 @import './utils/variables';
 @import './base/reset';
 @import './utils/transitions';
-
-@import './base/backdrop';
-@import './components/film_info_modal';
+@import './utils/fonts';
 @import './base/container';
+@import './base/backdrop';
+@import './components/arrow-link';
 @import './components/header';
-@import './components/container';
+@import './components/theme-switch';
+@import './components/film-list';
+@import './components/film_info_modal';
 
 @import './components/footer';
-@import './components/player';
 @import './components/modal_team';
+
+@import './components/player';
 @import './components/pagination';

@@ -5,7 +5,9 @@ a {
   transition-property: fill, color, background-color, transform, border-color,
     letter-spacing;
 }
-
+body {
+  transition: background-color 250ms $time-function;
+}
 button {
   transition-duration: 250ms;
   transition-timing-function: $time-function;
