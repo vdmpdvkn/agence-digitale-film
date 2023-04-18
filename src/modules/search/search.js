@@ -41,10 +41,11 @@ export async function fetchFilmOnSearch(e) {
     refs.alertMessage.textContent =
       'Search result not successful. Enter the correct movie name!';
     refs.alertMessage.style.display = 'flex';
+    renderMoviesList(data.results);
     return;
   } else {
-    refs.alertMessage.textContent = 'Successful!';
-    refs.alertMessage.style.display = 'block';
+    // refs.alertMessage.textContent = 'Successful!';
+    // refs.alertMessage.style.display = 'block';
     refs.formRef.reset();
     renderMoviesList(data.results);
   }
