@@ -35,12 +35,13 @@ export function handleWatchedClick(event) {
     };
 
     setStorage(refs.WATCHED, filmInfo);
-
     toggleWatchedBtn();
-  } else if (button.classList.contains('remove-watched')) {
-    delFromStorage(refs.WATCHED, trailerId);
+    return;
+  }
+  delFromStorage(refs.WATCHED, trailerId);
+  toggleWatchedBtn();
+  if (!refs.buttonRefHome.classList.contains('header-nav--active')) {
     renderMoviesList(getStorage(refs.WATCHED));
-    toggleWatchedBtn();
   }
 }
 
@@ -76,11 +77,13 @@ export function handleQueueClick(event) {
     };
 
     setStorage(refs.QUEUE, filmInfo);
+    toggleWatchedBtn();
+    return;
+  }
+  delFromStorage(refs.QUEUE, trailerId);
+  toggleWatchedBtn();
 
-    toggleWatchedBtn();
-  } else if (button.classList.contains('remove-queue')) {
-    delFromStorage(refs.QUEUE, trailerId);
+  if (!refs.buttonRefHome.classList.contains('header-nav--active')) {
     renderMoviesList(getStorage(refs.QUEUE));
-    toggleWatchedBtn();
   }
 }
