@@ -56,7 +56,13 @@ export const setStorage = (section, filmInfo) => {
   if (dataArr.find(film => film.id === filmInfo.id)) {
     return; // if saved already
   }
-  dataArr.push(filmInfo);
+  const cleanFilmInfo = Object.keys(filmInfo).reduce((acc, key) => {
+    if (filmInfo[key] !== undefined) {
+      acc[key] = filmInfo[key];
+    }
+    return acc;
+  }, {});
+  dataArr.push(cleanFilmInfo);
 
   localStorage.setItem(section, JSON.stringify(dataArr));
   // del from other section code here
