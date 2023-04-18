@@ -53,14 +53,14 @@ function getMovieYear(releasedate) {
 
 function getMovieGenres(genreIdsArray, genres) {
   const genreNames = [];
-  genreIdsArray.forEach(id => {
-    if (genreNames.length >= 2) {
-      return;
-    }
+    genreIdsArray.forEach(id => {
     const genre = genres.find(genreObj => genreObj.id === id);
     if (genre) {
       genreNames.push(genre.name);
     }
   });
+  if (genreNames.length > 2) {
+    genreNames.splice(2,(genreNames.length-2),'Other');
+  }
   return genreNames.join(', ');
 }

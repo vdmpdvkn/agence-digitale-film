@@ -13,7 +13,7 @@ export function paginationFunc(total_results, fetch_refs, pagination) {
   const paginationParams = {
     totalItems: total_results,
     itemsPerPage: 20,
-    visiblePages: 5,
+    visiblePages: 3,
     currentPage: 1,
     centerAlign: true,
   };
@@ -33,7 +33,7 @@ export function paginationStorage(ref, pagination) {
   pagination = new Pagination(refs.paginationRef, {
     totalItems: getStorageLength(ref),
     itemsPerPage: 5,
-    visiblePages: 5,
+    visiblePages: 3,
     currentPage: 1,
     centerAlign: true,
   });
