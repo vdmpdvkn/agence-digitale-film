@@ -10,7 +10,7 @@ import {
 import { handleFilmInfoData } from './handleFilmInfoData';
 import { playVideo } from '../player/playVideo';
 import { Notify } from 'notiflix';
-
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 export function openFilmInfoOnPosterClick(evt) {
   if (
     evt.target.nodeName !== 'LI' &&
@@ -27,6 +27,9 @@ export function openFilmInfoOnPosterClick(evt) {
     queueBtnRef,
     filmWatchTrailerBtnRef,
   } = refs;
+  Loading.hourglass('Loading...', {
+    svgColor: '#b92f2c',
+  });
 
   fetchApi({
     param: apiRefs.MOVIE_DETAILS,
@@ -36,6 +39,7 @@ export function openFilmInfoOnPosterClick(evt) {
         evt.target.parentNode.parentNode.dataset.id
     ),
   }).then(data => {
+    Loading.remove();
     if (data.status_code === 34) {
       Notify.failure('No info');
       return;

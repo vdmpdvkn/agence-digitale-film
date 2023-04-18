@@ -5,6 +5,7 @@ import renderMoviesList from '../html-render';
 
 import { paginationFunc } from '../pagination/pagination';
 import { onClickHomeButton } from '../header/button-home';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 export function errorSearch() {
   refs.alertMessage.style.display = 'none';
@@ -16,13 +17,16 @@ export async function fetchFilmOnSearch(e) {
   e.preventDefault();
   const searchQuery = e.currentTarget.elements.film.value.trim();
   onClickHomeButton();
-
+  Loading.hourglass('Loading...', {
+    svgColor: '#b92f2c',
+  });
   const data = await fetchApi({
     param: apiRefs.SEARCH,
     page: 1,
     query: searchQuery,
   });
   const dataEl = data.total_results;
+  Loading.remove();
 
   if (searchQuery === '') {
     refs.alertMessage.textContent =

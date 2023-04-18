@@ -2,6 +2,7 @@ import { apiRefs } from '../api-service';
 import fetchApi from '../api-service';
 import { refs } from '../refs';
 import Plyr from 'plyr';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const modalPlayer = document.getElementById('modal-player');
 const playerEl = document.getElementById('player');
 
@@ -11,6 +12,9 @@ export async function playVideo() {
   playerEl.style.display = 'block';
   playerEl.innerHTML = '';
   try {
+    Loading.hourglass('Loading...', {
+      svgColor: '#b92f2c',
+    });
     const data = await fetchApi({ param: apiRefs.MOVIE_VIDEO, id: id });
     const keyVideo = await data.results.find(element => {
       return element.type === 'Trailer';
@@ -24,7 +28,7 @@ export async function playVideo() {
   ></iframe>`;
     playerEl.innerHTML = htmlIframe;
     document.addEventListener('click', closePlayerOnBackdropClick);
-
+    Loading.remove();
     window.player = player;
     player.on(error, () => {
       console.log('error= ' + error);
