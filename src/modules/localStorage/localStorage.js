@@ -60,10 +60,10 @@ export const setStorage = (section, filmInfo) => {
 
   localStorage.setItem(section, JSON.stringify(dataArr));
   // del from other section code here
-  delFromStorage(
-    section === refs.WATCHED ? refs.QUEUE : refs.WATCHED,
-    filmInfo.id
-  );
+  // delFromStorage(
+  //   section === refs.WATCHED ? refs.QUEUE : refs.WATCHED,
+  //   filmInfo.id
+  // );
 };
 
 export const delFromStorage = (section, id) => {
