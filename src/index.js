@@ -22,4 +22,4 @@ refs.errorSearchRef.addEventListener('input', _debounce(errorSearch, 250));
 
 startingRender();
 import './modules/theme-switcher/theme';
-// import './modules/modal-team/modalTeamOpenClose';
+import './modules/modal-team/modalTeamOpenClose';
