@@ -5,6 +5,7 @@ import {
 } from '../localStorage/localStorage';
 import { refs } from '../refs';
 import { toggleWatchedBtn } from './toggleButton';
+import renderMoviesList from '../html-render';
 
 export function handleWatchedClick(event) {
   const button = event.target;
@@ -38,6 +39,7 @@ export function handleWatchedClick(event) {
     toggleWatchedBtn();
   } else if (button.classList.contains('remove-watched')) {
     delFromStorage(refs.WATCHED, trailerId);
+    renderMoviesList(getStorage(refs.WATCHED));
     toggleWatchedBtn();
   }
 }
@@ -78,6 +80,7 @@ export function handleQueueClick(event) {
     toggleWatchedBtn();
   } else if (button.classList.contains('remove-queue')) {
     delFromStorage(refs.QUEUE, trailerId);
+    renderMoviesList(getStorage(refs.QUEUE));
     toggleWatchedBtn();
   }
 }
