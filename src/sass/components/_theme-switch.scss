@@ -85,8 +85,12 @@ body.dark {
   display: inline-block;
   width: 60px;
   height: 34px;
-  bottom: 8;
-  right: 8;
+  bottom: 111px;
+  right: 90;
+  @media screen and (min-width: $tablet) {
+    bottom: 8;
+    right: 8;
+  }
 }
 
 /* Hide default HTML checkbox */
