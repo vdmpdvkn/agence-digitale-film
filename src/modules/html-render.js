@@ -25,11 +25,15 @@ export default function renderMoviesList(moviesArr) {
         ? getMovieYear(release_date)
         : getMovieYear(first_air_date);
       let movieName = title ? title : name;
+      let maxCharactersPerMovieTitle = 30;
+      movieName =
+        movieName.length > maxCharactersPerMovieTitle
+          ? movieName.slice(0, maxCharactersPerMovieTitle) + '...'
+          : movieName;
       const movieGenres = getMovieGenres(genre_ids, globalGenres);
       let fullImageUrl = poster_path
         ? `${IMAGE_URL}/${imageSize}${poster_path}`
         : samplePlaceholder;
-      // const fullImageUrl = `${IMAGE_URL}/${imageSize}${poster_path}`;
       return `<li class="movie" data-id=${id}>
   <div class = "movie-image__wrapper">
   <img src="${fullImageUrl}" alt="${movieName}"/></div>
@@ -53,14 +57,14 @@ function getMovieYear(releasedate) {
 
 function getMovieGenres(genreIdsArray, genres) {
   const genreNames = [];
-    genreIdsArray.forEach(id => {
+  genreIdsArray.forEach(id => {
     const genre = genres.find(genreObj => genreObj.id === id);
     if (genre) {
       genreNames.push(genre.name);
     }
   });
   if (genreNames.length > 2) {
-    genreNames.splice(2,(genreNames.length-2),'Other');
+    genreNames.splice(2, genreNames.length - 2, 'Other');
   }
   return genreNames.join(', ');
 }
