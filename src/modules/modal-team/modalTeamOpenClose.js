@@ -17,3 +17,9 @@ modalTeam.addEventListener('click', event => {
     modalTeam.classList.add('is-hidden');
   }
 });
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' || event.key === 27) {
+    modalTeam.classList.add('is-hidden');
+  }
+});
