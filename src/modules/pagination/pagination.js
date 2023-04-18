@@ -18,6 +18,9 @@ export function paginationFunc(total_results, fetch_refs, pagination) {
     centerAlign: true,
   };
 
+  refs.paginationRef.style.display =
+    total_results <= paginationParams.itemsPerPage ? 'none' : 'block';
+
   pagination = new Pagination(refs.paginationRef, paginationParams);
 
   pagination.on('afterMove', eventData => {
@@ -37,6 +40,9 @@ export function paginationStorage(ref, pagination) {
     currentPage: 1,
     centerAlign: true,
   });
+
+  refs.paginationRef.style.display =
+    getStorageLength(ref) <= pagination._options.itemsPerPage ? 'none' : 'block';
 
   pagination.on('afterMove', eventData => {
     const page = eventData.page;
