@@ -79,6 +79,35 @@ body.dark {
   & .arrow-link:focus > svg {
     fill: getcolor(black-theme-accent-color);
   }
+  & .modal-team {
+    background-color: rgb(44, 43, 43);
+  }
+  & .team-member {
+    background-color: rgb(44, 43, 43);
+    box-shadow: 0 1px 4px rgba(255, 107, 1, 0.7);
+  }
+
+  & .team-member:hover {
+    box-shadow: 0 2px 4px rgba(255, 107, 1, 0.8),
+      0 0px 16px rgba(255, 107, 1, 0.8);
+  }
+  & .team-member:hover .team-image {
+    border-color: #ff6b01;
+  }
+  & .our-team .social li a {
+    border: 3px solid #ff6b01;
+  }
+  & .team-member__icon {
+    fill: #ff6b01;
+  }
+  & .our-team .title {
+    color: #ff6b01;
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+  & .our-team .description {
+    color: #e1e1e1;
+}
 }
 .switch {
   position: absolute;
