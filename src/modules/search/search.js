@@ -44,8 +44,8 @@ export async function fetchFilmOnSearch(e) {
     renderMoviesList(data.results);
     return;
   } else {
-    // refs.alertMessage.textContent = 'Successful!';
-    // refs.alertMessage.style.display = 'block';
+    refs.alertMessage.textContent = 'Successful!';
+    refs.alertMessage.style.display = 'block';
     refs.formRef.reset();
     renderMoviesList(data.results);
   }
