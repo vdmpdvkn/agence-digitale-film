@@ -108,6 +108,10 @@ body.dark {
   & .our-team .description {
     color: #e1e1e1;
 }
+& .modal-team__close:hover > svg {
+  fill: #ff6b01;
+  transform: scale(1.1);
+}
 }
 .switch {
   position: absolute;
