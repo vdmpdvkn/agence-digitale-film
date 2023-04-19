@@ -1,0 +1,173 @@
+/* The switch - the box around the slider */
+body.dark {
+  background-color: rgb(44, 43, 43);
+  & .error_localstoragy {
+    color: getcolor(black-theme-text-color);
+  }
+  & .movie {
+    box-shadow: 0 0 8px rgba(15, 15, 15, 0.6);
+    &:hover {
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+    }
+  }
+  & .movie__title {
+    color: getcolor(black-theme-text-color);
+  }
+  & .movie__genres,
+  & .movie__year {
+    color: getcolor(black-theme-accent-color);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: getcolor(black-theme-accent-color);
+  }
+  & .tui-is-selected.tui-page-btn,
+  & .tui-page-btn:hover {
+    background-color: getcolor(black-theme-accent-color);
+  }
+  & .tui-page-btn {
+    background-color: #262525;
+    color: getcolor(black-theme-text-color);
+  }
+  & .film-info {
+    background-color: rgb(44, 43, 43);
+    &__name,
+    &__about,
+    &__text,
+    &__data {
+      color: getcolor(black-theme-text-color);
+    }
+    &__data--red {
+      background-color: getcolor(black-theme-accent-color);
+    }
+    &__data--grey {
+      background-color: #262525;
+    }
+    &__close {
+      fill: getcolor(black-theme-text-color);
+    }
+    &__close:hover > svg {
+      fill: getcolor(black-theme-accent-color);
+    }
+  }
+  & .buttons-list__button {
+    background-color: getcolor(black-theme-accent-color);
+    border-color: getcolor(black-theme-accent-color);
+    &--black,
+    &--transparent.buttons-list__button--black {
+      background-color: #262525;
+      color: getcolor(black-theme-text-color);
+      border-color: #262525;
+    }
+    &--transparent {
+      background-color: transparent;
+      color: getcolor(black-theme-accent-color);
+      border-color: #262525;
+    }
+  }
+  & .footer {
+    background-color: rgb(44, 43, 43);
+    border-top: 1px solid #262525;
+    & > span,
+    p {
+      color: getcolor(black-theme-text-color);
+    }
+  }
+  & .arrow-link > svg {
+    fill: getcolor(black-theme-text-color);
+  }
+  & .arrow-link:hover > svg,
+  & .arrow-link:focus > svg {
+    fill: getcolor(black-theme-accent-color);
+  }
+  & .modal-team {
+    background-color: rgb(44, 43, 43);
+  }
+  & .team-member {
+    background-color: rgb(44, 43, 43);
+    box-shadow: 0 1px 4px rgba(255, 107, 1, 0.7);
+  }
+
+  & .team-member:hover {
+    box-shadow: 0 2px 4px rgba(255, 107, 1, 0.8),
+      0 0px 16px rgba(255, 107, 1, 0.8);
+  }
+  & .team-member:hover .team-image {
+    border-color: #ff6b01;
+  }
+  & .our-team .social li a {
+    border: 3px solid #ff6b01;
+  }
+  & .team-member__icon {
+    fill: #ff6b01;
+  }
+  & .our-team .title {
+    color: #ff6b01;
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+  & .our-team .description {
+    color: #e1e1e1;
+}
+& .modal-team__close:hover > svg {
+  fill: #ff6b01;
+  transform: scale(1.1);
+}
+}
+.switch {
+  position: absolute;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  bottom: 111px;
+  right: 90;
+  @media screen and (min-width: $tablet) {
+    bottom: 8;
+    right: 8;
+  }
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  display: none;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #fff;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input.checked + .slider {
+  background-color: #262525;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input.checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}

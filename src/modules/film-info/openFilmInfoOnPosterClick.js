@@ -7,8 +7,10 @@ import {
   closeFilmInfoOnEsc,
   closeFilmInfoOnCloseBtnClick,
 } from './closeFilmInfoModal';
-import { handleFilmInfoData } from './handelFilmInfoData';
-
+import { handleFilmInfoData } from './handleFilmInfoData';
+import { playVideo } from '../player/playVideo';
+import { Notify } from 'notiflix';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 export function openFilmInfoOnPosterClick(evt) {
   if (
     evt.target.nodeName !== 'LI' &&
@@ -18,33 +20,42 @@ export function openFilmInfoOnPosterClick(evt) {
     return;
   }
 
-  const { backdropRef, filmInfoCloseBtnRef, watchedBtnRef, queueBtnRef } = refs;
+  const {
+    backdropRef,
+    filmInfoCloseBtnRef,
+    watchedBtnRef,
+    queueBtnRef,
+    filmWatchTrailerBtnRef,
+  } = refs;
+  Loading.hourglass('Loading...', {
+    svgColor: '#b92f2c',
+  });
 
   fetchApi({
     param: apiRefs.MOVIE_DETAILS,
     id: Number(
       evt.target.dataset.id ??
-      evt.target.parentNode.dataset.id ??
-      evt.target.parentNode.parentNode.dataset.id
-    )
-  }
-  )
-    .then(data => {
-      handleFilmInfoData(data, watchedBtnRef, queueBtnRef);
-      renderFilmInfo(data);
-      setBackdropStyle(data);
-      console.log('data = ', data);
-    })
-    .then(() => {
-      backdropRef.classList.remove('is-hidden');
-    });
+        evt.target.parentNode.dataset.id ??
+        evt.target.parentNode.parentNode.dataset.id
+    ),
+  }).then(data => {
+    Loading.remove();
+    if (data.status_code === 34) {
+      Notify.failure('No info');
+      return;
+    }
 
-  document.body.style.overflow = 'hidden';
-  document.addEventListener('click', closeFilmInfoOnEsc);
-  backdropRef.addEventListener('click', closeFilmInfoOnBackdropClick);
-  filmInfoCloseBtnRef.addEventListener('click', closeFilmInfoOnCloseBtnClick);
+    handleFilmInfoData(data, watchedBtnRef, queueBtnRef);
+    renderFilmInfo(data);
+    setBackdropStyle(data);
+    backdropRef.classList.remove('is-hidden');
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('click', closeFilmInfoOnEsc);
+    backdropRef.addEventListener('click', closeFilmInfoOnBackdropClick);
+    filmInfoCloseBtnRef.addEventListener('click', closeFilmInfoOnCloseBtnClick);
+    filmWatchTrailerBtnRef.addEventListener('click', playVideo);
+  });
 }
-
 
 function setBackdropStyle(data) {
   const imageLink = 'https://image.tmdb.org/t/p/original/';
@@ -58,5 +69,4 @@ function setBackdropStyle(data) {
   elementWithBgImage.style.backgroundPosition = 'center';
   elementWithBgImage.style.backgroundRepeat = 'no-repeat';
 }
-
       

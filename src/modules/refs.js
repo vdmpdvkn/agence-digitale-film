@@ -25,6 +25,8 @@ export const refs = {
   queueBtnRef: document.getElementById('js-queue'),
   alertMessage: document.querySelector('.header-form--search'),
   errorSearchRef: document.querySelector('.header-form__input'),
+  switchThemeRef: document.querySelector('#switch-theme'),
+  arrowLinkRef: document.querySelector('.arrow-link'),
 
   WATCHED: 'watched',
   QUEUE: 'queue',

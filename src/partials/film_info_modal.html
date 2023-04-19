@@ -16,14 +16,16 @@
           height="357"
         />
         <button type="button" class="trailer-btn" id="js-trailer">
-          <svg width="30" height="30">
+          <svg width="45" height="45">
             <use href="./images/header/icons.svg#icon-play3"></use>
           </svg>
         </button>
       </div>
 
       <div class="film-info__text-wrapper">
-        <h2 class="film-info__name" id="film-name"></h2>
+        <h2 class="film-info__name visually-hidden" id="film-name">
+          Інформація про фільм
+        </h2>
         <div class="film-info__lists-wrapper">
           <ul class="film-info__list">
             <li class="film-info__item">Vote / Votes</li>
@@ -53,7 +55,7 @@
             <li class="buttons-list__item">
               <button
                 type="button"
-                class="add-watched buttons-list__button buttons-list__button--red"
+                class="add-watched buttons-list__button"
                 id="js-watched"
               >
                 Add to Watched

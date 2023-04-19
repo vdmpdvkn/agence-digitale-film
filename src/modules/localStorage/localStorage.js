@@ -20,17 +20,31 @@
 // }
 
 import { refs } from '../refs';
-import { Notify } from 'notiflix';
 
-export const getStorage = section => {
+export const getStorage = (
+  section,
+  pagination = { page: 1, perPage: Infinity }
+) => {
   const dataArr = [];
   const data = JSON.parse(localStorage.getItem(section));
   if (!data) {
-    // Notify.info(`You have NO films in ${section}`);
     return dataArr;
   }
-  dataArr.push(...data);
+  dataArr.push(
+    ...data.slice(
+      (pagination.page - 1) * pagination.perPage,
+      pagination.page * pagination.perPage
+    )
+  );
   return dataArr; // return array of films info obj similar to entry arrays of obj
+};
+
+export const getStorageLength = section => {
+  const data = JSON.parse(localStorage.getItem(section));
+  if (!data) {
+    return 0;
+  }
+  return data.length;
 };
 
 export const getItemFromStorage = (section, id) => {
@@ -40,17 +54,22 @@ export const getItemFromStorage = (section, id) => {
 export const setStorage = (section, filmInfo) => {
   const dataArr = getStorage(section);
   if (dataArr.find(film => film.id === filmInfo.id)) {
-    Notify.info(`You have this film in ${section} already`);
     return; // if saved already
   }
-  dataArr.push(filmInfo);
-  Notify.info(`You got it`);
+  const cleanFilmInfo = Object.keys(filmInfo).reduce((acc, key) => {
+    if (filmInfo[key] !== undefined) {
+      acc[key] = filmInfo[key];
+    }
+    return acc;
+  }, {});
+  dataArr.push(cleanFilmInfo);
+
   localStorage.setItem(section, JSON.stringify(dataArr));
   // del from other section code here
-  delFromStorage(
-    section === refs.WATCHED ? refs.QUEUE : refs.WATCHED,
-    filmInfo.id
-  );
+  // delFromStorage(
+  //   section === refs.WATCHED ? refs.QUEUE : refs.WATCHED,
+  //   filmInfo.id
+  // );
 };
 
 export const delFromStorage = (section, id) => {
@@ -60,7 +79,6 @@ export const delFromStorage = (section, id) => {
   }
   const filtered = dataArr.filter(film => film.id !== id);
   localStorage.setItem(section, JSON.stringify(filtered));
-  Notify.info(`You delete it`);
 };
 
 export const clearStorage = section => {

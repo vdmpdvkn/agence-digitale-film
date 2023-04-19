@@ -15,7 +15,6 @@ export function renderFilmInfo(object) {
     id,
     release_date,
   } = object;
-  console.log('object->', object);
 
   const {
     filmNameRef,
@@ -55,16 +54,24 @@ export function renderFilmInfo(object) {
 
   filmAddToWatchedBtnRef.dataset.id = id;
   filmAddToWatchedBtnRef.dataset.original_title = original_title;
-  filmAddToWatchedBtnRef.dataset.title = title;
-  filmAddToWatchedBtnRef.dataset.name = name;
+  if (title) {
+    filmAddToWatchedBtnRef.dataset.title = title;
+  }
+  if (name) {
+    filmAddToWatchedBtnRef.dataset.name = name;
+  }
   filmAddToWatchedBtnRef.dataset.poster_path = poster_path;
   filmAddToWatchedBtnRef.dataset.genre_ids = filmGenresIds;
   filmAddToWatchedBtnRef.dataset.release_date = release_date;
 
   filmAddToQueueBtnRef.dataset.id = id;
   filmAddToQueueBtnRef.dataset.original_title = original_title;
-  filmAddToQueueBtnRef.dataset.title = title;
-  filmAddToQueueBtnRef.dataset.name = name;
+  if (title) {
+    filmAddToQueueBtnRef.dataset.title = title;
+  }
+  if (name) {
+    filmAddToQueueBtnRef.dataset.name = name;
+  }
   filmAddToQueueBtnRef.dataset.poster_path = poster_path;
   filmAddToQueueBtnRef.dataset.genre_ids = filmGenresIds;
   filmAddToQueueBtnRef.dataset.release_date = release_date;

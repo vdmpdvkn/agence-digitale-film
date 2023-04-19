@@ -8,7 +8,11 @@
           class="header-form__input"
           placeholder="Movie Search"
         />
-        <button class="header-form__button" id="button-form-search">
+        <button
+          class="header-form__button"
+          id="button-form-search"
+          aria-label="Search"
+        >
           <svg class="header-form__button--svg">
             <use href="./images/header/icons.svg#icon-search"></use>
           </svg>
@@ -19,7 +23,6 @@
           class="header-nav_home header-nav--active"
           id="button-header-home"
         >
-          <a href="index.html"></a>
           HOME
         </button>
         <button class="header-nav_library" id="button-header-library">
@@ -54,5 +57,10 @@
         QUEUE
       </button>
     </div>
+    <label class="switch">
+      <input type="checkbox" id="switch-theme" />
+
+      <span class="slider"></span>
+    </label>
   </div>
 </header>

@@ -4,7 +4,8 @@ import {
   getStorage,
 } from '../localStorage/localStorage';
 import { refs } from '../refs';
-import { toggleWatchedBtn } from './toggleButtons/toggleButton';
+import { toggleWatchedBtn } from './toggleButton';
+import renderMoviesList from '../html-render';
 
 export function handleWatchedClick(event) {
   const button = event.target;
@@ -34,11 +35,16 @@ export function handleWatchedClick(event) {
     };
 
     setStorage(refs.WATCHED, filmInfo);
-    delFromStorage(refs.QUEUE, trailerId);
     toggleWatchedBtn();
-  } else if (button.classList.contains('remove-watched')) {
-    delFromStorage(refs.WATCHED, trailerId);
-    toggleWatchedBtn();
+    return;
+  }
+  delFromStorage(refs.WATCHED, trailerId);
+  toggleWatchedBtn();
+  if (
+    !refs.buttonRefHome.classList.contains('header-nav--active') &&
+    refs.buttonRefWatched.classList.contains('header-button__library--active')
+  ) {
+    renderMoviesList(getStorage(refs.WATCHED));
   }
 }
 
@@ -74,10 +80,16 @@ export function handleQueueClick(event) {
     };
 
     setStorage(refs.QUEUE, filmInfo);
-    delFromStorage(refs.WATCHED, trailerId);
     toggleWatchedBtn();
-  } else if (button.classList.contains('remove-queue')) {
-    delFromStorage(refs.QUEUE, trailerId);
-    toggleWatchedBtn();
+    return;
+  }
+  delFromStorage(refs.QUEUE, trailerId);
+  toggleWatchedBtn();
+
+  if (
+    !refs.buttonRefHome.classList.contains('header-nav--active') &&
+    refs.buttonRefQueue.classList.contains('header-button__library--active')
+  ) {
+    renderMoviesList(getStorage(refs.QUEUE));
   }
 }

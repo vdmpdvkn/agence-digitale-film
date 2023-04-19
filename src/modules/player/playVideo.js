@@ -2,6 +2,7 @@ import { apiRefs } from '../api-service';
 import fetchApi from '../api-service';
 import { refs } from '../refs';
 import Plyr from 'plyr';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const modalPlayer = document.getElementById('modal-player');
 const playerEl = document.getElementById('player');
 
@@ -11,8 +12,13 @@ export async function playVideo() {
   playerEl.style.display = 'block';
   playerEl.innerHTML = '';
   try {
+    Loading.hourglass('Loading...', {
+      svgColor: '#b92f2c',
+    });
     const data = await fetchApi({ param: apiRefs.MOVIE_VIDEO, id: id });
-    const keyVideo = await data.results[0].key;
+    const keyVideo = await data.results.find(element => {
+      return element.type === 'Trailer';
+    }).key;
     const player = new Plyr('#player', {});
     const htmlIframe = `<iframe
     src="https://www.youtube.com/embed/${keyVideo}?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
@@ -21,8 +27,8 @@ export async function playVideo() {
     allow="autoplay"
   ></iframe>`;
     playerEl.innerHTML = htmlIframe;
-    document.addEventListener('click', closePlayerOnEsc);
-
+    document.addEventListener('click', closePlayerOnBackdropClick);
+    Loading.remove();
     window.player = player;
     player.on(error, () => {
       console.log('error= ' + error);
@@ -31,12 +37,13 @@ export async function playVideo() {
     return;
   }
 }
-function closePlayerOnEsc(e) {
+function closePlayerOnBackdropClick(e) {
   if (!e.target.classList.contains('backdrop')) {
     return;
   }
   player.destroy();
   modalPlayer.classList.add('is-hidden');
   playerEl.innerHTML = '';
+  document.removeEventListener('click', closePlayerOnBackdropClick);
 }
 // 1
